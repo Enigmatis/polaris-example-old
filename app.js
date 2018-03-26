@@ -1,3 +1,3 @@
-const Polaris = require('@vulcan/polaris');
+const {RunGraphQLServer} = require('@vulcan/polaris');
 const Schema = require('./schema/schema');
-Polaris.RunGraphQLServer(Schema, 3000);
+RunGraphQLServer(Schema, 3000);

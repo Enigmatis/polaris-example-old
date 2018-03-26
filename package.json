@@ -1,0 +1,27 @@
+{
+  "name": "polaris-example",
+  "version": "0.0.1",
+  "description": "example of graphql server using polaris engine",
+  "main": "app.js",
+  "dependencies": {
+    "lodash": "^4.17.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yarinvak/apollo-server-example.git"
+  },
+  "keywords": [
+    "polaris",
+    "graphql-example"
+  ],
+  "author": "yarin vaknin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yarinvak/apollo-server-example/issues"
+  },
+  "homepage": "https://github.com/yarinvak/apollo-server-example#readme"
+}
