@@ -1,5 +1,7 @@
 // Get common entity interface because we use it as an interface
-const CommonEntity = require('./../../common/common-entity');
+const {CommonEntities} = require('@vulcan/polaris');
+const CommonEntityInterface = CommonEntities.commonEntityInterface;
+
 // Define the Book type schema
 const Book = `
     type Book implements CommonEntity {
@@ -11,10 +13,11 @@ const Book = `
         author: String
     }
 `;
+
 // Get the Book's mutationResolvers
 const resolvers = require('../../resolvers/bookResolvers');
 
 
 module.exports = {
-    types: [Book, CommonEntity.types], resolvers: resolvers
+    types: [Book, CommonEntityInterface.types], resolvers: resolvers
 };
