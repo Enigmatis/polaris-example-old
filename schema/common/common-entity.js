@@ -1,7 +1,4 @@
-const CommonEntity = `interface CommonEntity{
-        id: ID!
-        creationDate: String,
-        lastUpdateDate: String,
-        dataVersion: Int!}`;
+const {CommonEntities} = require('@vulcan/polaris');
+const CommonEntity = CommonEntities[0];
 
-module.exports = {types: CommonEntity};
+module.exports = CommonEntity;
