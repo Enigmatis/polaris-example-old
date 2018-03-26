@@ -4,7 +4,7 @@ const {graphqlExpress, graphiqlExpress} = require('apollo-server-express');
 const {makeExecutableSchema} = require('graphql-tools');
 
 // initialize the app
-function startGraphQLServer(schemaObject) {
+function startGraphQLServer(schemaObject, port) {
     const schema = makeExecutableSchema(schemaObject);
     const app = express();
 
@@ -13,8 +13,11 @@ function startGraphQLServer(schemaObject) {
     app.use('/graphiql', graphiqlExpress({endpointURL: '/graphql'}));
 
 // run server
-    app.listen(3000, () => {
-        console.log('Go to http://localhost:3000/graphiql to run queries!');
+    app.listen(port, () => {
+        console.log('POLARIS engine v0.1 is starting your server . . .');
+        console.log('----------------------------------------------------------');
+        console.log('GraphQL endpoint is now running at: http://localhost:'+port+'/graphql');
+        console.log('GraphiQL is now running at: http://localhost:'+port+'/graphiql');
     });
 }
 
