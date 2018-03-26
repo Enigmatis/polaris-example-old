@@ -11,7 +11,7 @@ const Book = `
         author: String
     }
 `;
-// Get the Book's resolvers
+// Get the Book's mutationResolvers
 const resolvers = require('../../resolvers/bookResolvers');
 
 
