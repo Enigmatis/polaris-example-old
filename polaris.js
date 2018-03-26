@@ -1,10 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const {graphqlExpress, graphiqlExpress} = require('apollo-server-express');
+const {makeExecutableSchema} = require('graphql-tools');
 
 // initialize the app
-function startGraphQLServer (schemaPath){
-    const schema = require(schemaPath);
+function startGraphQLServer(schemaObject) {
+    const schema = makeExecutableSchema(schemaObject);
     const app = express();
 
 // create endpoints

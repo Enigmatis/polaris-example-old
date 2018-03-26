@@ -1,3 +1,3 @@
 const polaris = require('./polaris');
 
-polaris.startGraphQLServer('./schema/schema');
+polaris.startGraphQLServer(require('./schema/schema'));
