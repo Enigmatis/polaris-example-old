@@ -1,5 +1,4 @@
-const {CommonEntities: {commonEntityInterface}} = require('@vulcan/polaris');
-const {CommonDirectives: {upperCaseDirective}} = require('@vulcan/polaris');
+const {CommonEntities: {commonEntityInterface, upperCaseDirective}} = require('@vulcan/polaris');
 
 // Define the Book type schema
 const Book = `
