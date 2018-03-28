@@ -7,5 +7,5 @@ const BookInput = `
 `;
 
 module.exports = {
-    types: [BookInput]
+    typeDefs: [BookInput]
 };

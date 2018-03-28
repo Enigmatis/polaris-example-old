@@ -8,8 +8,8 @@ const Query = `type Query { books: [Book] }`;
 
 module.exports = {
     // Combine the Query type schema with the Book types schema because we use it in the Query type
-    types: [Query, ...Book.types],
+    typeDefs: [Query, ...Book.typeDefs],
     // Combine the Query mutationResolvers with the Book mutationResolvers
     resolvers: merge(resolvers, Book.resolvers),
-    directives: Book.directives
+    schemaDirectives: Book.schemaDirectives
 };

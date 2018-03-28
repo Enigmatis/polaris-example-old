@@ -10,7 +10,7 @@ const Mutation = `
 
 module.exports = {
     // Combine the Query type schema with the Book types schema because we use it in the Query type
-    types: [Mutation, ...Book.types, ...BookInput.types],
+    typeDefs: [Mutation, ...Book.typeDefs, ...BookInput.typeDefs],
     // Combine the Query mutationResolvers with the Book mutationResolvers
     resolvers: merge(mutationResolvers)
 };

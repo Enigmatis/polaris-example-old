@@ -16,7 +16,7 @@ const Book = `
 const resolvers = require('../../resolvers/bookResolvers');
 
 module.exports = {
-    types: [Book, commonEntityInterface.types, upperCaseDirective.types],
+    typeDefs: [Book, commonEntityInterface.typeDefs, upperCaseDirective.typeDefs],
     resolvers: resolvers,
-    directives: upperCaseDirective.directive
+    schemaDirectives: upperCaseDirective.schemaDirectives
 };

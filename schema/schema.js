@@ -15,7 +15,7 @@ const resolvers = merge(Query.resolvers, Mutation.resolvers);
 // Export an executable schema
 module.exports = {
     // The schema is a combination of the schema definition, the Query types and the Mutation types
-    typeDefs: [SchemaDefinition, ...Query.types, ...Mutation.types],
+    typeDefs: [SchemaDefinition, ...Query.typeDefs, ...Mutation.typeDefs],
     resolvers,
-    schemaDirectives: Query.directives
+    schemaDirectives: Query.schemaDirectives
 };
