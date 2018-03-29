@@ -1,5 +1,5 @@
 const {CommonEntities: {commonEntityInterface, upperCaseDirective}} = require('@vulcan/polaris');
-
+const {merge} = require('lodash');
 // Define the Book type schema
 const Book = `
     type Book implements CommonEntity {
@@ -8,7 +8,8 @@ const Book = `
         lastUpdateDate: String,
         dataVersion: Int!,
         title: String @upper,
-        author: String
+        author: String,
+        otherBook: Book
     }
 `;
 
@@ -16,7 +17,8 @@ const Book = `
 const resolvers = require('../../resolvers/bookResolvers');
 
 module.exports = {
-    typeDefs: [Book, commonEntityInterface.typeDefs, upperCaseDirective.typeDefs],
+    typeDefs: [Book, ...commonEntityInterface.typeDefs, ...upperCaseDirective.typeDefs],
     resolvers: resolvers,
-    schemaDirectives: upperCaseDirective.schemaDirectives
-};
+    schemaDirectives: merge(upperCaseDirective.schemaDirectives)
+}
+;
