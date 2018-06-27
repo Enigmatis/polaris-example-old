@@ -4,6 +4,7 @@
   "description": "example of graphql server using polaris engine",
   "main": "app.js",
   "dependencies": {
+    "@enigmatis/polaris": "0.0.2",
     "lodash": "^4.17.5"
   },
   "devDependencies": {},

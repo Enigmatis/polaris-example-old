@@ -1,10 +1,12 @@
-const resolvers = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var resolvers = {
     Mutation: {
-        updateBook(_, {book}) {
-            return {id: book.id, title: book.title, author: book.author};
+        updateBook: function (_, _a) {
+            var book = _a.book;
+            return { id: book.id, title: book.title, author: book.author };
         }
     }
-
 };
-
-module.exports = resolvers;
+exports.resolvers = resolvers;
+//# sourceMappingURL=mutationResolvers.js.map

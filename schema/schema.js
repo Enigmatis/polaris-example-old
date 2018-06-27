@@ -1,21 +1,15 @@
-const {merge} = require('lodash');
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var lodash_1 = require("lodash");
 // Get the Query Root object
-const Query = require('./entities/query/rootQuery');
-
+var rootQuery_1 = require("./entities/query/rootQuery");
 // Get the Mutation Root object
-const Mutation = require('./entities/mutation/rootMutation');
-
+var rootMutation_1 = require("./entities/mutation/rootMutation");
+var Polaris = require("@enigmatis/polaris");
 // Create the schema definition
-const SchemaDefinition = `schema {query: Query, mutation: Mutation}`;
-
+var schemaDefinition = "schema {query: Query, mutation: Mutation}";
 // Create the schema mutationResolvers
-const resolvers = merge(Query.resolvers, Mutation.resolvers);
-
-// Export an executable schema
-module.exports = {
-    // The schema is a combination of the schema definition, the Query types and the Mutation types
-    typeDefs: [SchemaDefinition, ...Query.typeDefs, ...Mutation.typeDefs],
-    resolvers,
-    schemaDirectives: Query.schemaDirectives
-};
+var resolvers = lodash_1.merge(rootQuery_1.Query.resolvers, rootMutation_1.Mutation.resolvers);
+var SchemaWrapper = new Polaris.PolarisTypeWrapper([schemaDefinition].concat(rootQuery_1.Query.typeDefs, rootMutation_1.Mutation.typeDefs), resolvers, rootQuery_1.Query.schemaDirectives);
+exports.Schema = SchemaWrapper;
+//# sourceMappingURL=schema.js.map
