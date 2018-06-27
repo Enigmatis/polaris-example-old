@@ -5,6 +5,7 @@
   "main": "app.js",
   "dependencies": {
     "@enigmatis/polaris": "0.0.2",
+    "graphql-yoga": "^1.14.10",
     "lodash": "^4.17.5"
   },
   "devDependencies": {},
