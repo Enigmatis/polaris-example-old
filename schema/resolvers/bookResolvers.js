@@ -1,9 +1,11 @@
-const resolvers = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var resolvers = {
     Book: {
-        title(book){
-            return "title: " + book.title
+        title: function (book) {
+            return "title: " + book.title;
         }
     }
 };
-
-module.exports = resolvers;
+exports.resolvers = resolvers;
+//# sourceMappingURL=bookResolvers.js.map
