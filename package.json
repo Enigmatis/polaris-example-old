@@ -10,7 +10,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "linkPolaris": "npm link ../polaris",
+    "build": "npm install && npm run linkPolaris"
   },
   "repository": {
     "type": "git",
