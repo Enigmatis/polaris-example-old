@@ -1,17 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // We use book in our Query object
-const Book = require('./../output/book');
-const {merge} = require('lodash');
-const {CommonEntities: {connectionDirective}} = require('@vulcan/polaris');
+var Polaris = require("@enigmatis/polaris");
+var book_1 = require("../output/book");
+var lodash_1 = require("lodash");
+var polaris_1 = require("@enigmatis/polaris");
 // Get the Query's mutationResolvers
-const resolvers = require('../../resolvers/queryResolvers');
+var resolvers = require("../../resolvers/queryResolvers");
 // Create the type Query's schema
-const Query = `type Query {
- books: [Book] @connection }`;
-
-module.exports = {
-    // Combine the Query type schema with the Book types schema because we use it in the Query type
-    typeDefs: [Query, ...Book.typeDefs, ...connectionDirective.typeDefs],
-    // Combine the Query mutationResolvers with the Book mutationResolvers
-    resolvers: merge(resolvers, Book.resolvers),
-    schemaDirectives: merge(Book.schemaDirectives, connectionDirective.schemaDirectives)
-};
+var queryDef = "type Query {\n books: [Book] @connection }";
+var QueryWrapper = new Polaris.PolarisTypeWrapper([queryDef].concat(book_1.Book.typeDefs, polaris_1.CommonEntities.connectionDirective.typeDefs), lodash_1.merge(resolvers, book_1.Book.resolvers), lodash_1.merge(book_1.Book.schemaDirectives, polaris_1.CommonEntities.connectionDirective.schemaDirectives));
+exports.Query = QueryWrapper;
+//# sourceMappingURL=rootQuery.js.map

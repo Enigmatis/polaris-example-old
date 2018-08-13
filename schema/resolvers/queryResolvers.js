@@ -1,4 +1,6 @@
-const books = [
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var books = [
     {
         id: 1,
         title: "Harry Potter and the Sorcerer's stone",
@@ -10,8 +12,8 @@ const books = [
         author: 'Michael Crichton',
     },
 ];
-
-const resolvers = {
-    Query: {books: () => books},
+var resolvers = {
+    Query: { books: function () { return books; } },
 };
-module.exports = resolvers;
+exports.resolvers = resolvers;
+//# sourceMappingURL=queryResolvers.js.map

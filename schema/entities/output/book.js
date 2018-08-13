@@ -1,24 +1,12 @@
-const {CommonEntities: {commonEntityInterface, upperCaseDirective}} = require('@vulcan/polaris');
-const {merge} = require('lodash');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var polaris_1 = require("@enigmatis/polaris");
+var lodash_1 = require("lodash");
+var Polaris = require("@enigmatis/polaris");
 // Define the Book type schema
-const Book = `
-    type Book implements CommonEntity {
-        id: ID!
-        creationDate: String,
-        lastUpdateDate: String,
-        dataVersion: Int!,
-        title: String @upper,
-        author: String,
-        otherBook: Book
-    }
-`;
-
+var bookDef = "\n    type Book implements CommonEntity {\n        id: ID!\n        creationDate: String,\n        lastUpdateDate: String,\n        dataVersion: Int!,\n        title: String @upper,\n        author: String,\n        otherBook: Book\n    }\n";
 // Get the Book's mutationResolvers
-const resolvers = require('../../resolvers/bookResolvers');
-
-module.exports = {
-    typeDefs: [Book, ...commonEntityInterface.typeDefs, ...upperCaseDirective.typeDefs],
-    resolvers: resolvers,
-    schemaDirectives: merge(upperCaseDirective.schemaDirectives)
-}
-;
+var resolvers = require('../../resolvers/bookResolvers');
+var BookWrapper = new Polaris.PolarisTypeWrapper([bookDef].concat(polaris_1.CommonEntities.commonEntityInterface.typeDefs, polaris_1.CommonEntities.upperCaseDirective.typeDefs), resolvers, lodash_1.merge(polaris_1.CommonEntities.upperCaseDirective.schemaDirectives));
+exports.Book = BookWrapper;
+//# sourceMappingURL=book.js.map
