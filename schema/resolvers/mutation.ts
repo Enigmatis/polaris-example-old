@@ -1,6 +1,6 @@
 import {injectable} from "inversify";
 import "reflect-metadata";
-import {InjectableResolver} from "../../ioc/injectableInterfaces";
+import {InjectableResolver} from '@enigmatis/polaris';
 import {provide} from "inversify-binding-decorators";
 
 @provide("InjectableResolver")

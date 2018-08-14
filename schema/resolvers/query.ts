@@ -1,6 +1,6 @@
 import "reflect-metadata";
-import {InjectableResolver} from "../../ioc/injectableInterfaces";
-import { provide} from "inversify-binding-decorators";
+import {InjectableResolver} from '@enigmatis/polaris';
+import {provide} from "inversify-binding-decorators";
 
 let books = [
     {

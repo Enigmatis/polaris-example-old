@@ -1,12 +1,12 @@
 import "reflect-metadata";
-import {InjectableType} from "../../ioc/injectableInterfaces";
+import {InjectableType} from '@enigmatis/polaris';
 import { provide} from "inversify-binding-decorators";
 
 @provide("InjectableType")
 class Book implements InjectableType {
     definition(): string {
         return `
-            type Book {
+            type Book implements CommonEntity {
                 id: ID!
                 creationDate: String,
                 lastUpdateDate: String,

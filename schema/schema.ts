@@ -1,4 +1,4 @@
-import {InjectableResolver, InjectableType} from "../ioc/injectableInterfaces";
+import {InjectableResolver, InjectableType} from "@enigmatis/polaris";
 import {Container} from "inversify";
 import {buildProviderModule} from "inversify-binding-decorators";
 import {merge} from 'lodash';
