@@ -5,4 +5,3 @@ export interface InjectableType {
 export interface InjectableResolver {
     resolver(): any;
 }
-
