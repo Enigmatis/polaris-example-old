@@ -1,7 +1,4 @@
-import {GraphQLServer} from 'graphql-yoga'
 import {RunGraphQLServer} from '@enigmatis/polaris';
-import {Schema} from './schema/schema';
-RunGraphQLServer(Schema, 3000);
+import Schema from './schema/schema';
 
-// const server = new GraphQLServer({schema: Schema})
-// server.start(() => console.log('Server is running on localhost:4000'))
+RunGraphQLServer(Schema, 3000);

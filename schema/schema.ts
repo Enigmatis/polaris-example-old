@@ -1,21 +1,25 @@
+import {InjectableResolver, InjectableType} from "../ioc/injectableInterfaces";
+import {Container} from "inversify";
+import {buildProviderModule} from "inversify-binding-decorators";
 import {merge} from 'lodash';
+import Polaris = require("@enigmatis/polaris");
+import "reflect-metadata";
 
-// Get the Query Root object
-import {Query} from './entities/query/rootQuery';
+require('./entities/book');
+require('./entities/mutation');
+require('./entities/book.input');
+require('./entities/query');
+require('./resolvers/query');
+require('./resolvers/mutation');
+require('./resolvers/book');
 
-// Get the Mutation Root object
-import {Mutation} from './entities/mutation/rootMutation';
+let container = new Container();
+container.load(buildProviderModule());
 
-import Polaris = require('@enigmatis/polaris');
-
-// Create the schema definition
 let schemaDefinition = `schema {query: Query, mutation: Mutation}`;
-
-// Create the schema mutationResolvers
-let resolvers = merge(Query.resolvers, Mutation.resolvers);
-
-let SchemaWrapper = new Polaris.PolarisTypeWrapper([schemaDefinition, ...Query.typeDefs, ...Mutation.typeDefs], resolvers, Query.schemaDirectives);
-
-// Export an executable polaris schema
-export {SchemaWrapper as Schema};
-
+let definitions = [schemaDefinition, ...container.getAll<InjectableType>("InjectableType").map<string>(x => x.definition())];
+let resolvers = merge(container.getAll<InjectableResolver>("InjectableResolver").map(x =>
+    x.resolver()
+));
+let schema = new Polaris.PolarisTypeWrapper(definitions, resolvers);
+export default schema;
