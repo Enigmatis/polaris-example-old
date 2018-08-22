@@ -1,11 +1,10 @@
-import {merge} from 'lodash';
-import Polaris = require("@enigmatis/polaris");
 import "reflect-metadata";
 import glob = require('glob');
 import path= require('path');
 import {ISchemaCreator} from '@enigmatis/polaris';
 import {Container} from "inversify";
 import {buildProviderModule} from "inversify-binding-decorators";
+
 // Require all types and resolvers so they can be injected later
 requireAllInFolder(path.join(__dirname, './entities/**/*'));
 requireAllInFolder(path.join(__dirname, './resolvers/**/*'));
