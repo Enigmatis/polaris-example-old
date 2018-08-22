@@ -6,16 +6,19 @@ import {Query} from './entities/query/rootQuery';
 // Get the Mutation Root object
 import {Mutation} from './entities/mutation/rootMutation';
 
-import Polaris = require('@enigmatis/polaris');
+import {CommonEntities} from '@enigmatis/polaris'
+
 
 // Create the schema definition
 let schemaDefinition = `schema {query: Query, mutation: Mutation}`;
 
 // Create the schema mutationResolvers
-let resolvers = merge(Query.resolvers, Mutation.resolvers);
 
-let SchemaWrapper = new Polaris.PolarisTypeWrapper([schemaDefinition, ...Query.typeDefs, ...Mutation.typeDefs], resolvers, Query.schemaDirectives);
+// let SchemaWrapper = new Polaris.PolarisTypeWrapper([schemaDefinition, ...Query.typeDefs, ...Mutation.typeDefs], resolvers, Query.schemaDirectives);
 
 // Export an executable polaris schema
-export {SchemaWrapper as Schema};
+export const Schema = {
+    def:[schemaDefinition, ...Query.def, ...Mutation.def, CommonEntities.commonEntityInterface],
+    resolvers:{...Query.resolvers, ...Mutation.resolvers}
+};
 
