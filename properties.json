@@ -1,4 +1,7 @@
 {
   "foo": "bar",
-  "number": 1
+  "yogaProperties": {
+    "hello": "world"
+  },
+  "port": 8082
 }
