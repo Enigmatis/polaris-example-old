@@ -8,6 +8,6 @@ let bookInputDef = `
     }
 `;
 
-let BookInputWrapper = new Polaris.PolarisTypeWrapper([bookInputDef]);
-
-export {BookInputWrapper as BookInput};
+export const BookInput = {
+    def: [bookInputDef]
+};

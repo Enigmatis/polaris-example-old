@@ -1,8 +1,6 @@
 // We use book in our Query object
-import Polaris = require('@enigmatis/polaris');
 import {Book} from '../output/book';
 import {merge} from 'lodash';
-import {CommonEntities}  from '@enigmatis/polaris';
 
 // Get the Query's mutationResolvers
 import  resolvers = require('../../resolvers/queryResolvers');
@@ -12,7 +10,7 @@ import  resolvers = require('../../resolvers/queryResolvers');
 let queryDef = `type Query {
  books: [Book] @connection }`;
 
-let QueryWrapper = new Polaris.PolarisTypeWrapper([queryDef, ...Book.typeDefs, ...CommonEntities.connectionDirective.typeDefs], merge(resolvers, Book.resolvers),
-    merge(Book.schemaDirectives, CommonEntities.connectionDirective.schemaDirectives));
-
-export {QueryWrapper as Query};
+export const Query = {
+    def: [queryDef, ...Book.def],
+    resolvers: {...resolvers, ...Book.resolvers}
+};
