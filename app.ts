@@ -1,4 +1,11 @@
-import {RunGraphQLServer} from '@enigmatis/polaris';
-import Schema from './schema/schema';
+import {PolarisGraphQLServer} from '@enigmatis/polaris';
+import {Schema} from './schema/schema';
 
-RunGraphQLServer(Schema, 3000);
+const props = {
+    typeDefs:Schema.def,
+    resolvers:Schema.resolvers,
+    playground:"/"
+};
+
+let server = new PolarisGraphQLServer(props);
+server.start(null);
