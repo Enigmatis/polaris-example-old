@@ -1,6 +1,5 @@
 import {CommonEntities} from '@enigmatis/polaris';
 import {merge} from 'lodash';
-import Polaris = require('@enigmatis/polaris');
 
 // Define the Book type schema
 let bookDef = `
@@ -14,10 +13,9 @@ let bookDef = `
         otherBook: Book
     }
 `;
-import resolvers= require('../../resolvers/bookResolvers');
+import resolvers = require('../../resolvers/bookResolvers');
 
-// Get the Book's mutationResolvers
-let BookWrapper = new Polaris.PolarisTypeWrapper([bookDef, ...CommonEntities.commonEntityInterface.typeDefs, ...CommonEntities.upperCaseDirective.typeDefs],
-    resolvers, merge(CommonEntities.upperCaseDirective.schemaDirectives));
-
-export {BookWrapper as Book};
+export const Book = {
+    def: [bookDef],
+    resolvers: resolvers
+};
