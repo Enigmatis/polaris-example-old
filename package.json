@@ -5,17 +5,20 @@
   "main": "app.js",
   "dependencies": {
     "@enigmatis/polaris": "0.0.2",
+    "@types/glob": "^5.0.35",
+    "glob": "^7.1.2",
     "graphql-yoga": "^1.14.10",
     "inversify": "^4.13.0",
     "inversify-binding-decorators": "^4.0.0",
     "lodash": "^4.17.5",
+    "merge-graphql-schemas": "^1.5.3",
     "reflect-metadata": "^0.1.12"
   },
   "devDependencies": {},
   "scripts": {
     "test": "test",
     "linkPolaris": "npm link ../polaris",
-    "build": "npm install && npm run linkPolaris",
+    "build": "npm install && npm run linkPolaris && tsc",
     "start": "node ./dist/app.js"
   },
   "repository": {
