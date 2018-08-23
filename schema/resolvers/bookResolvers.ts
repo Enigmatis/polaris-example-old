@@ -1,7 +1,7 @@
 let resolvers = {
     Book: {
-        title(book){
-            return "title: " + book.title
+        title(book) {
+            return 'Special Edition: ' + book.title
         }
     }
 };
