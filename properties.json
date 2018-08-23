@@ -1,7 +1,4 @@
 {
-  "foo": "bar",
-  "yogaProperties": {
-    "hello": "world"
-  },
-  "port": 8082
+  "port": 8085,
+  "endpoint": "/customEndpoint"
 }
