@@ -18,7 +18,10 @@
   "scripts": {
     "test": "test",
     "linkPolaris": "npm link ../polaris",
-    "build": "npm install && npm run linkPolaris && tsc",
+    "clean": "rimraf dist",
+    "tsc": "tsc",
+    "build": "npm run clean && npm run tsc",
+    "init": "npm install && npm run linkPolaris",
     "start": "node ./dist/app.js"
   },
   "repository": {
