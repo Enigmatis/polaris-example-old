@@ -8,9 +8,7 @@ class BookResolvers implements InjectableResolver {
     resolver(): IResolvers {
         return {
             Book: {
-                title(book) {
-                    return "title: " + book.title
-                }
+                title: root=>"The title is: " + root.title
             }
         };
     }
