@@ -1,6 +1,5 @@
 import {PolarisGraphQLServer} from '@enigmatis/polaris';
-import Schema from './schema/schema';
-import {Props} from "graphql-yoga/dist/types";
+import {Schema} from './schema/schema';
 
 const props = {
     typeDefs: Schema.def,
