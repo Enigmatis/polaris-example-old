@@ -5,14 +5,17 @@
   "main": "app.js",
   "dependencies": {
     "@enigmatis/polaris": "0.0.2",
-    "graphql-yoga": "^1.14.10",
     "lodash": "^4.17.5"
   },
   "devDependencies": {},
+  "resolutions": {
+    "graphql": "^0.13.2"
+  },
   "scripts": {
     "test": "test",
+    "tsc": "tsc",
     "linkPolaris": "npm link ../polaris",
-    "build": "npm install && npm run linkPolaris"
+    "build": "npm install && npm run linkPolaris && tsc"
   },
   "repository": {
     "type": "git",
