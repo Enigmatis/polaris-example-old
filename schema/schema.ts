@@ -1,8 +1,6 @@
 import {merge} from 'lodash';
-
 // Get the Query Root object
 import {Query} from './entities/query/rootQuery';
-
 // Get the Mutation Root object
 import {Mutation} from './entities/mutation/rootMutation';
 
@@ -18,7 +16,7 @@ let schemaDefinition = `schema {query: Query, mutation: Mutation}`;
 
 // Export an executable polaris schema
 export const Schema = {
-    def:[schemaDefinition, ...Query.def, ...Mutation.def, CommonEntities.commonEntityInterface],
-    resolvers:{...Query.resolvers, ...Mutation.resolvers}
+    def: [schemaDefinition, ...Query.def, ...Mutation.def, CommonEntities.commonEntityInterface.prototype.definition()],
+    resolvers: {...Query.resolvers, ...Mutation.resolvers}
 };
 
