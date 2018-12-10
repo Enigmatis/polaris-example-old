@@ -6,9 +6,7 @@ const props = {
     resolvers: Schema.resolvers
 };
 
-let server = new PolarisGraphQLServer({
-    schema: props
-});
+let server = new PolarisGraphQLServer(props);
 server.start();
 
 // const server = new GraphQLServer({schema: Schema})

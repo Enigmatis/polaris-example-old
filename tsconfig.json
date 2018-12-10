@@ -8,5 +8,11 @@
   },
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "compilerOptions": {
+    "lib": [
+      "es6",
+      "esnext.asynciterable"
+    ]
+  }
 }
