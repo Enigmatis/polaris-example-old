@@ -4,15 +4,19 @@
     "target": "es5",
     "sourceMap": true,
     "allowJs": false,
-    "outDir": "./dist"
-  },
-  "exclude": [
-    "node_modules"
-  ],
-  "compilerOptions": {
+    "outDir": "./dist",
     "lib": [
       "es6",
       "esnext.asynciterable"
-    ]
-  }
+    ],
+    "baseUrl": "",
+    "paths": {
+      "*": [
+        "typings/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

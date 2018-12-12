@@ -4,7 +4,9 @@
   "description": "example of graphql server using polaris engine",
   "main": "app.js",
   "dependencies": {
-    "@enigmatis/polaris": "0.0.2",
+    "@enigmatis/polaris": "../polaris",
+    "@enigmatis/polaris-logs": "../polaris-logs",
+    "@types/node": "10.12.12",
     "lodash": "^4.17.5"
   },
   "devDependencies": {},
@@ -14,8 +16,8 @@
   "scripts": {
     "test": "test",
     "tsc": "tsc",
-    "linkPolaris": "npm link ../polaris",
-    "build": "npm install && npm run linkPolaris && tsc"
+    "start": "node ./dist/app.js",
+    "build": "npm install && npm link && tsc"
   },
   "repository": {
     "type": "git",
