@@ -10,7 +10,8 @@ const props = {
         repositoryVersion: "v1",
         environment: "dev",
         component: "component"
-    }
+    },
+    logPath: 'log.log'
 };
 let server = new PolarisGraphQLServer(props);
 server.getLogger().info(new PolarisLogProperties("hello world"));
