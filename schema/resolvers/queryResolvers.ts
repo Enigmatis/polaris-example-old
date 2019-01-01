@@ -1,3 +1,6 @@
+import {InjectableResolver} from '@enigmatis/polaris';
+import {provide} from "inversify-binding-decorators";
+
 let books = [
     {
         id: 1,
@@ -11,7 +14,11 @@ let books = [
     },
 ];
 
-let resolvers = {
-    Query: {books: () => books},
-};
-export =resolvers;
+@provide("InjectableResolver")
+export class QueryResolvers implements InjectableResolver {
+    resolver(): any {
+        return {
+            Query: {books: () => books},
+        };
+    }
+}

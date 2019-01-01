@@ -1,14 +1,17 @@
 import {merge} from 'lodash';
-import mutationResolvers = require('../../resolvers/mutationResolvers');
-import {BookInput} from '../input/bookInput';
-import {Book} from '../output/book';
+import {InjectableType} from '@enigmatis/polaris';
+import {provide} from "inversify-binding-decorators";
+import {MutationResolvers} from '../../resolvers/mutationResolvers';
 
-let mutationDef = `
-    type Mutation {
-        updateBook(book: BookInput!): Book 
-    }`;
-
-export const Mutation = {
-    def: [mutationDef, ...BookInput.def],
-    resolvers:{...mutationResolvers}
-};
+@provide("InjectableType")
+export class Mutation implements InjectableType {
+    definition(): string {
+        return `
+             type Mutation {
+                 updateBook(book: BookInput!): Book 
+             }`;
+    }
+    resolvers(): any {
+        MutationResolvers
+    }
+}

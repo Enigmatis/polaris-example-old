@@ -1,22 +1,31 @@
-import {merge} from 'lodash';
-// Get the Query Root object
-import {Query} from './entities/query/rootQuery';
-// Get the Mutation Root object
-import {Mutation} from './entities/mutation/rootMutation';
+import "reflect-metadata"
+import glob = require('glob');
+import path = require('path');
+import {ISchemaCreator} from '@enigmatis/polaris';
+import {Container} from "inversify";
+import {buildProviderModule} from "inversify-binding-decorators";
 
-import {CommonEntities} from '@enigmatis/polaris'
+// Require all types and resolvers so they can be injected later
+requireAllInFolder(path.join(__dirname, './entities/**/*'));
+requireAllInFolder(path.join(__dirname, './resolvers/**/*'));
 
 
-// Create the schema definition
-let schemaDefinition = `schema {query: Query, mutation: Mutation}`;
+function requireAllInFolder(pathToDir: string): void {
+    let files = glob.sync(pathToDir);
+    files.forEach(file => {
+        if (file.endsWith('.js')) {
+            file = file.replace(/\.[^/.]+$/, "");
+            require(file);
+        }
+    });
+}
 
-// Create the schema mutationResolvers
+// Create container
+let container = new Container();
+container.load(buildProviderModule());
 
-// let SchemaWrapper = new Polaris.PolarisTypeWrapper([schemaDefinition, ...Query.typeDefs, ...Mutation.typeDefs], resolvers, Query.schemaDirectives);
+let creator: ISchemaCreator = container.get<ISchemaCreator>("ISchemaCreator");
 
-// Export an executable polaris schema
-export const Schema = {
-    def: [schemaDefinition, ...Query.def, ...Mutation.def, CommonEntities.commonEntityInterface.prototype.definition()],
-    resolvers: {...Query.resolvers, ...Mutation.resolvers}
-};
+let schema = creator.generateSchema();
 
+export {schema as Schema}

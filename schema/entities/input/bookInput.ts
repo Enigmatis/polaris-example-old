@@ -1,13 +1,13 @@
-import Polaris = require('@enigmatis/polaris');
+import {InjectableType} from '@enigmatis/polaris';
+import {provide} from "inversify-binding-decorators";
 
-let bookInputDef = `
-    input BookInput{
-        id: ID!        
-        title: String,
-        author: String
+@provide("InjectableType")
+export class BookInput implements InjectableType {
+    definition(): string {
+        return `input BookInput{
+                     id: ID!        
+                     title: String,
+                     author: String
+                 }`;
     }
-`;
-
-export const BookInput = {
-    def: [bookInputDef]
-};
+}
