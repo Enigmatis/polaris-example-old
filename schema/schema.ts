@@ -1,7 +1,7 @@
 import "reflect-metadata"
 import glob = require('glob');
 import path = require('path');
-import {ISchemaCreator, InjectableLogger, PolarisGraphQLServer} from '@enigmatis/polaris';
+import {ISchemaCreator, InjectableLogger, PolarisGraphQLServer, IPolarisGraphQLServer} from '@enigmatis/polaris';
 import {Container} from "inversify";
 import {buildProviderModule} from "inversify-binding-decorators";
 
@@ -26,7 +26,7 @@ container.load(buildProviderModule());
 
 let creator: ISchemaCreator = container.get<ISchemaCreator>("ISchemaCreator");
 let logger: InjectableLogger = container.get<InjectableLogger>("InjectableLogger");
-//let server: IPolarisGraphQLServer = container.get<IPolarisGraphQLServer>("IPolarisGraphQLServer");
+let server: IPolarisGraphQLServer = container.get<IPolarisGraphQLServer>("IPolarisGraphQLServer");
 
 let schema = creator.generateSchema();
 

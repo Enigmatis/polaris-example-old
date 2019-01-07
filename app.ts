@@ -5,7 +5,7 @@ const props = {
     typeDefs: Schema.def,
     resolvers: Schema.resolvers
 };
-let server = new PolarisGraphQLServer(props);
+let server = new PolarisGraphQLServer();
 //server.getLogger().info(new PolarisLogProperties("hello world"));
 server.start();
 
