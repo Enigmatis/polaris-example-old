@@ -1,7 +1,7 @@
 import "reflect-metadata"
 import glob = require('glob');
 import path = require('path');
-import {ISchemaCreator} from '@enigmatis/polaris';
+import {ISchemaCreator, InjectableLogger, PolarisGraphQLServer} from '@enigmatis/polaris';
 import {Container} from "inversify";
 import {buildProviderModule} from "inversify-binding-decorators";
 
@@ -13,7 +13,7 @@ requireAllInFolder(path.join(__dirname, './resolvers/**/*'));
 function requireAllInFolder(pathToDir: string): void {
     let files = glob.sync(pathToDir);
     files.forEach(file => {
-        if (file.endsWith('.js')) {
+        if (file.endsWith('.ts') || file.endsWith('.js')) {
             file = file.replace(/\.[^/.]+$/, "");
             require(file);
         }
@@ -21,10 +21,12 @@ function requireAllInFolder(pathToDir: string): void {
 }
 
 // Create container
-let container = new Container();
+let container = new Container({skipBaseClassChecks: true});
 container.load(buildProviderModule());
 
 let creator: ISchemaCreator = container.get<ISchemaCreator>("ISchemaCreator");
+let logger: InjectableLogger = container.get<InjectableLogger>("InjectableLogger");
+//let server: IPolarisGraphQLServer = container.get<IPolarisGraphQLServer>("IPolarisGraphQLServer");
 
 let schema = creator.generateSchema();
 
