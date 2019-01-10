@@ -1,4 +1,4 @@
-import {merge} from 'lodash';
+ import {merge} from 'lodash';
 import {InjectableType} from '@enigmatis/polaris';
 import {provide} from "inversify-binding-decorators";
 import {MutationResolvers} from '../../resolvers/mutationResolvers';
