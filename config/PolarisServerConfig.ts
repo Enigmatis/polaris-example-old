@@ -1,5 +1,5 @@
 import {injectable} from "inversify";
-import {IPropertiesConfig, PolarisProperties, readJsonFromFile} from "@enigmatis/polaris";
+import {IPolarisServerConfig, PolarisProperties, readJsonFromFile} from "@enigmatis/polaris";
 import {LoggerConfiguration} from "@enigmatis/polaris-logs/dist/src/LoggerConfiguration";
 import {ApplicationLogProperties} from "@enigmatis/polaris-logs";
 
@@ -7,7 +7,7 @@ import {ApplicationLogProperties} from "@enigmatis/polaris-logs";
 const path = require('path');
 
 @injectable()
-export class PropertiesConfig implements IPropertiesConfig {
+export class PolarisServerConfig implements IPolarisServerConfig {
 
     port: number;
     endpoint: string;
