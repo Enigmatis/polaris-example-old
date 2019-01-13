@@ -1,15 +1,13 @@
 import {injectable} from "inversify";
-import {IConfig, LogProperties, PolarisProperties, readJsonFromFile} from "@enigmatis/polaris";
+import {IPropertiesConfig, PolarisProperties, readJsonFromFile} from "@enigmatis/polaris";
+import {LoggerConfiguration} from "@enigmatis/polaris-logs/dist/src/LoggerConfiguration";
+import {ApplicationLogProperties} from "@enigmatis/polaris-logs";
 
 
 const path = require('path');
 
 @injectable()
-export class Config implements IConfig {
-
-    logstashHost: string;
-    logstashPort: number;
-    loggerLevel: string;
+export class PropertiesConfig implements IPropertiesConfig {
 
     port: number;
     endpoint: string;
@@ -20,16 +18,8 @@ export class Config implements IConfig {
     component: string;
 
     constructor() {
-        let polarisPropertiesPath = path.join(__dirname, '../properties.json');
+        let polarisPropertiesPath = path.join(__dirname, '../../properties.json');
         this.initiallizePolarisProperties(readJsonFromFile(polarisPropertiesPath));
-        let polarisLogConfigurationPath = path.join(__dirname, '../log-configuration.json');
-        this.initiallizeLogProperties(readJsonFromFile(polarisLogConfigurationPath));
-    }
-
-    private initiallizeLogProperties(logConfiguration: string) {
-        this.loggerLevel = logConfiguration['loggerLevel'];
-        this.logstashHost = logConfiguration['logstashHost'];
-        this.logstashPort = logConfiguration['logstashPort'];
     }
 
     private initiallizePolarisProperties(properties: string) {
@@ -42,13 +32,13 @@ export class Config implements IConfig {
         this.component = properties['component'];
     }
 
-    public getLogProperties(): LogProperties {
-        return new LogProperties(this.loggerLevel, this.logstashHost, this.logstashPort);
-    }
-
     public getPolarisProperties(): PolarisProperties {
         return new PolarisProperties(this.port, this.endpoint, this.applicationId, this.applicationName,
             this.repositoryVersion, this.environment, this.component);
     }
 
+    public getApplicationLogProperties(): ApplicationLogProperties {
+        return new ApplicationLogProperties(this.applicationId, this.applicationName,
+            this.repositoryVersion, this.environment, this.component);
+    }
 }
