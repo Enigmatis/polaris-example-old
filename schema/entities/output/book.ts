@@ -1,21 +1,24 @@
-import {CommonEntities} from '@enigmatis/polaris';
+import {InjectableType} from '@enigmatis/polaris';
+import {provide} from "inversify-binding-decorators";
+import {BookResolvers} from '../../resolvers/bookResolvers';
 import {merge} from 'lodash';
 
-// Define the Book type schema
-let bookDef = `
-    type Book implements CommonEntity {
-        id: ID!
-        creationDate: String,
-        lastUpdateDate: String,
-        dataVersion: Int!,
-        title: String @upper,
-        author: String,
-        otherBook: Book
+@provide("InjectableType")
+export class Book implements InjectableType {
+    definition(): string {
+        return `
+             type Book implements CommonEntity {
+                 id: ID!
+                 creationDate: String,
+                 lastUpdateDate: String,
+                 dataVersion: Int!,
+                 title: String @upper,
+                 author: String,
+                 otherBook: Book
+             }
+         `;
     }
-`;
-import resolvers = require('../../resolvers/bookResolvers');
-
-export const Book = {
-    def: [bookDef],
-    resolvers: resolvers
-};
+    resolvers(): any{
+        BookResolvers
+    }
+}

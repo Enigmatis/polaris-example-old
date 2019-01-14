@@ -4,7 +4,25 @@
     "target": "es5",
     "sourceMap": true,
     "allowJs": false,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "types": ["reflect-metadata"],
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "lib": [
+      "es6",
+      "es2017",
+      "dom",
+      "esnext",
+      "esnext.asynciterable"
+    ],
+    "baseUrl": "",
+    "paths": {
+      "*": [
+        "typings/*"
+      ]
+    }
   },
   "exclude": [
     "node_modules"

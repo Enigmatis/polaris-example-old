@@ -4,8 +4,19 @@
   "description": "example of graphql server using polaris engine",
   "main": "app.js",
   "dependencies": {
-    "@enigmatis/polaris": "0.0.2",
-    "lodash": "^4.17.5"
+    "@enigmatis/polaris": "../polaris",
+    "@enigmatis/polaris-logs": "../polaris-logs",
+    "@types/glob": "^5.0.35",
+    "@types/node": "10.12.12",
+    "inversify": "^5.0.1",
+    "inversify-binding-decorators": "^4.0.0",
+    "glob": "^7.1.2",
+    "graphql": "^0.13.2",
+    "graphql-tools": "^4.0.3",
+    "typescript": "^3.0.1",
+    "lodash": "^4.17.5",
+    "merge-graphql-schemas": "^1.5.8",
+    "reflect-metadata": "^0.1.12"
   },
   "devDependencies": {},
   "resolutions": {
@@ -14,8 +25,9 @@
   "scripts": {
     "test": "test",
     "tsc": "tsc",
-    "linkPolaris": "npm link ../polaris",
-    "build": "npm install && npm run linkPolaris && tsc"
+    "start": "node ./dist/app.js",
+    "build": "npm install && npm link && tsc",
+    "clean": "rimraf dist"
   },
   "repository": {
     "type": "git",

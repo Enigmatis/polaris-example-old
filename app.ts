@@ -1,15 +1,13 @@
-import {PolarisGraphQLServer} from '@enigmatis/polaris';
-import {Schema} from './schema/schema';
+import {ILogConfig, IPolarisGraphQLServer, IPolarisServerConfig, polarisContainer} from '@enigmatis/polaris';
+import {Container} from "inversify";
+import {schemaContainer} from "./schema/schema"
+import {ContextLogPropertiesWrapper} from "@enigmatis/polaris/dist/logging/ContextLogPropertiesWrapper";
+import {LogConfig} from "./config/LogConfig";
+import {PolarisServerConfig} from "./config/PolarisServerConfig";
 
-const props = {
-    typeDefs: Schema.def,
-    resolvers: Schema.resolvers
-};
+polarisContainer.bind<ILogConfig>("ILogConfig").to(LogConfig)
+polarisContainer.bind<IPolarisServerConfig>("IPolarisServerConfig").to(PolarisServerConfig)
+let mergedContainer = Container.merge(polarisContainer, schemaContainer);
+let server: IPolarisGraphQLServer = mergedContainer.get<IPolarisGraphQLServer>("IPolarisGraphQLServer");
 
-let server = new PolarisGraphQLServer({
-    schema: props
-});
 server.start();
-
-// const server = new GraphQLServer({schema: Schema})
-// server.start(() => console.log('Server is running on localhost:4000'))
