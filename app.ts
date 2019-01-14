@@ -4,7 +4,6 @@ import {schemaContainer} from "./schema/schema"
 import {polarisContainer} from "@enigmatis/polaris";
 import {ContextLogPropertiesWrapper} from "@enigmatis/polaris/dist/logging/ContextLogPropertiesWrapper";
 import {LogPropertiesWrapper} from "@enigmatis/polaris-logs";
-import {container} from "@enigmatis/polaris/dist/index";
 import {LogConfig} from "./config/LogConfig";
 import {PolarisServerConfig} from "./config/PolarisServerConfig";
 
