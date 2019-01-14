@@ -1,6 +1,7 @@
 import {injectable} from "inversify";
-import {IPolarisServerConfig, PolarisProperties, readJsonFromFile} from "@enigmatis/polaris";
+import {IPolarisServerConfig, PolarisProperties} from "@enigmatis/polaris";
 import {ApplicationLogProperties} from "@enigmatis/polaris-logs";
+import {readJsonFromFile} from "../utils/FileReader";
 
 
 const path = require('path');
