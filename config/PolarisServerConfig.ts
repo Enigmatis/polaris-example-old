@@ -33,8 +33,7 @@ export class PolarisServerConfig implements IPolarisServerConfig {
     }
 
     public getPolarisProperties(): PolarisProperties {
-        return new PolarisProperties(this.port, this.endpoint, this.applicationId, this.applicationName,
-            this.repositoryVersion, this.environment, this.component);
+        return new PolarisProperties(this.port, this.endpoint);
     }
 
     public getApplicationLogProperties(): ApplicationLogProperties {
