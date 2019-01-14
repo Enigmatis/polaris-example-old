@@ -12,6 +12,6 @@ requireAllInFolder(path.join(__dirname, './resolvers/**/*'));
 // Create container
 let schemaContainer = new Container();
 schemaContainer.load(buildProviderModule());
-schemaContainer.bind<CommonEntityInterface>("CommonEntityInterface").to(CommonEntityInterface)
-schemaContainer.bind<InjectableType>("InjectableType").to(CommonEntityInterface)
-export {schemaContainer}
+schemaContainer.bind<CommonEntityInterface>("CommonEntityInterface").to(CommonEntityInterface);
+schemaContainer.bind<InjectableType>("InjectableType").to(CommonEntityInterface);
+export {schemaContainer};
