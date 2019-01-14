@@ -1,17 +1,22 @@
-import {IPolarisGraphQLServer} from '@enigmatis/polaris';
+import {ILogConfig, IPolarisGraphQLServer, IPolarisServerConfig} from '@enigmatis/polaris';
 import {Container} from "inversify";
 import {schemaContainer} from "./schema/schema"
-import {container} from "@enigmatis/polaris";
+import {polarisContainer} from "@enigmatis/polaris";
 import {ContextLogPropertiesWrapper} from "@enigmatis/polaris/dist/logging/ContextLogPropertiesWrapper";
-import {LoggerConfiguration, LogPropertiesWrapper, ApplicationLogProperties} from "@enigmatis/polaris-logs";
+import {LogPropertiesWrapper} from "@enigmatis/polaris-logs";
+import {container} from "@enigmatis/polaris/dist/index";
+import {LogConfig} from "./config/LogConfig";
+import {PolarisServerConfig} from "./config/PolarisServerConfig";
 
 //TODO: delete these when log properties wrapper is deleted
 
-container.bind<LogPropertiesWrapper>("LogPropertiesWrapper")
+polarisContainer.bind<LogPropertiesWrapper>("LogPropertiesWrapper")
     .toConstantValue(new ContextLogPropertiesWrapper())
     .whenTargetNamed("GraphQLLogger");
 
-let mergedContainer = Container.merge(container, schemaContainer);
+polarisContainer.bind<ILogConfig>("ILogConfig").to(LogConfig)
+polarisContainer.bind<IPolarisServerConfig>("IPolarisServerConfig").to(PolarisServerConfig)
+let mergedContainer = Container.merge(polarisContainer, schemaContainer);
 let server: IPolarisGraphQLServer = mergedContainer.get<IPolarisGraphQLServer>("IPolarisGraphQLServer");
 
 server.start();

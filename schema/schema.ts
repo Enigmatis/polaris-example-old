@@ -3,9 +3,7 @@ import glob = require('glob');
 import path = require('path');
 import {Container} from "inversify";
 import {buildProviderModule} from "inversify-binding-decorators";
-import {CommonEntityInterface, container, ILogConfig,IPolarisServerConfig, InjectableType} from '@enigmatis/polaris';
-import {LogConfig} from "../config/LogConfig";
-import {PolarisServerConfig} from "../config/PolarisServerConfig";
+import {CommonEntityInterface, InjectableType} from '@enigmatis/polaris';
 
 // Require all types and resolvers so they can be injected later
 requireAllInFolder(path.join(__dirname, './entities/**/*'));
@@ -26,6 +24,4 @@ let schemaContainer = new Container();
 schemaContainer.load(buildProviderModule());
 schemaContainer.bind<CommonEntityInterface>("CommonEntityInterface").to(CommonEntityInterface)
 schemaContainer.bind<InjectableType>("InjectableType").to(CommonEntityInterface)
-container.bind<ILogConfig>("ILogConfig").to(LogConfig)
-container.bind<IPolarisServerConfig>("IPolarisServerConfig").to(PolarisServerConfig)
 export {schemaContainer}
