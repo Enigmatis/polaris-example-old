@@ -1,5 +1,7 @@
 {
   "logstashHost": "127.0.0.1",
   "logstashPort": 12345,
-  "loggerLevel": "info"
+  "loggerLevel": "info",
+  "writeToConsole":  true,
+  "writeFullMessageToConsole": false
 }

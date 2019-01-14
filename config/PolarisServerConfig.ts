@@ -1,6 +1,5 @@
 import {injectable} from "inversify";
 import {IPolarisServerConfig, PolarisProperties, readJsonFromFile} from "@enigmatis/polaris";
-import {LoggerConfiguration} from "@enigmatis/polaris-logs/dist/src/LoggerConfiguration";
 import {ApplicationLogProperties} from "@enigmatis/polaris-logs";
 
 
@@ -38,7 +37,12 @@ export class PolarisServerConfig implements IPolarisServerConfig {
     }
 
     public getApplicationLogProperties(): ApplicationLogProperties {
-        return new ApplicationLogProperties(this.applicationId, this.applicationName,
-            this.repositoryVersion, this.environment, this.component);
+        let applicationLogProperties: ApplicationLogProperties = {
+            id: this.applicationId,
+            name: this.applicationName,
+            repositoryVersion: this.repositoryVersion,
+            environment: this.environment,
+            component: this.component};
+        return applicationLogProperties;
     }
 }
