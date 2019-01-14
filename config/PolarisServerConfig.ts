@@ -22,7 +22,7 @@ export class PolarisServerConfig implements IPolarisServerConfig {
         this.initiallizePolarisProperties(readJsonFromFile(polarisPropertiesPath));
     }
 
-    private initiallizePolarisProperties(properties: string) {
+    private initiallizePolarisProperties(properties: object) {
         this.port = properties['port'];
         this.endpoint = properties['endpoint'];
         this.applicationId = properties['applicationId'];

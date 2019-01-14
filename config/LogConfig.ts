@@ -20,7 +20,7 @@ export class LogConfig implements ILogConfig {
         this.initiallizeLogProperties(readJsonFromFile(polarisLogConfigurationPath));
     }
 
-    private initiallizeLogProperties(logConfiguration: string) {
+    private initiallizeLogProperties(logConfiguration: object) {
         this.loggerLevel = logConfiguration['loggerLevel'];
         this.logstashHost = logConfiguration['logstashHost'];
         this.logstashPort = logConfiguration['logstashPort'];
