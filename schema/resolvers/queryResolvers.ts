@@ -6,6 +6,11 @@ let books = [
         id: 1,
         title: "Harry Potter and the Sorcerer's stone",
         author: 'J.K. Rowling',
+        otherBook:{
+            id: 2,
+            title: 'Jurassic Park',
+            author: 'Michael Crichton',
+        }
     },
     {
         id: 2,
