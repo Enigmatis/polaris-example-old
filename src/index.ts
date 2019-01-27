@@ -18,11 +18,6 @@ polarisContainer
     .to(ExampleServerConfig);
 polarisContainer.bind<PolarisMiddleware>(POLARIS_TYPES.PolarisMiddleware).to(ExampleMiddleware);
 const mergedContainer = Container.merge(polarisContainer, schemaContainer);
-// (mergedContainer as any)._bindingDictionary._map.forEach(x => {
-//     x.forEach(y=>{
-//         console.log({ serviceIdentifier: y.serviceIdentifier, implementationType: y.implementationType });
-//     })
-// });
 const server: GraphQLServer = mergedContainer.get<GraphQLServer>(POLARIS_TYPES.GraphQLServer);
 
 server.start();
