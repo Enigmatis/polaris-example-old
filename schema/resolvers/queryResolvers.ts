@@ -1,4 +1,4 @@
-import {InjectableResolver, POLARIS_TYPES} from '@enigmatis/polaris';
+import {CommonEntityInterface, InjectableResolver, POLARIS_TYPES} from '@enigmatis/polaris';
 import {provide} from "inversify-binding-decorators";
 
 let books = [
@@ -10,12 +10,23 @@ let books = [
             id: 2,
             title: 'Jurassic Park',
             author: 'Michael Crichton',
-        }
+            creationDate: 'String',
+            lastUpdateDate: 'String',
+            dataVersion: 5
+        },
+        creationDate: 'String',
+        lastUpdateDate: 'String',
+        dataVersion: 2
+
     },
     {
         id: 2,
         title: 'Jurassic Park',
         author: 'Michael Crichton',
+
+        creationDate: 'String',
+        lastUpdateDate: 'String',
+        dataVersion: 5
     },
 ];
 

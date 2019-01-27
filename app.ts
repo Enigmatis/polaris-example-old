@@ -3,11 +3,10 @@ import {
     IPolarisGraphQLServer,
     IPolarisServerConfig, POLARIS_TYPES,
     polarisContainer,
-    PolarisMiddleware,
+    PolarisMiddleware
 } from '@enigmatis/polaris';
 import {Container} from "inversify";
 import {schemaContainer} from "./schema/schema"
-import {ContextLogPropertiesWrapper} from "@enigmatis/polaris/dist/logging/ContextLogPropertiesWrapper";
 import {LogConfig} from "./config/LogConfig";
 import {PolarisServerConfig} from "./config/PolarisServerConfig";
 import {ExampleMiddleware} from "./middleware/example-middleware";
