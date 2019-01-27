@@ -1,25 +1,28 @@
-import { schemaContainer } from './schema/schema';
 import {
-    LogConfig,
     GraphQLServer,
-    PolarisServerConfig, POLARIS_TYPES,
+    LogConfig,
+    POLARIS_TYPES,
     polarisContainer,
     PolarisMiddleware,
+    PolarisServerConfig,
 } from '@enigmatis/polaris';
 import { Container } from 'inversify';
-import { ExampleLogConfig } from './config/ExampleLogConfig';
-import { ExampleServerConfig } from './config/ExampleServerConfig';
+import { ExampleLogConfig } from './config/example-log-config';
+import { ExampleServerConfig } from './config/example-server-config';
 import { ExampleMiddleware } from './middleware/example-middleware';
+import { schemaContainer } from './schema/schema';
 
 polarisContainer.bind<LogConfig>(POLARIS_TYPES.LogConfig).to(ExampleLogConfig);
-polarisContainer.bind<PolarisServerConfig>(POLARIS_TYPES.PolarisServerConfig).to(ExampleServerConfig);
+polarisContainer
+    .bind<PolarisServerConfig>(POLARIS_TYPES.PolarisServerConfig)
+    .to(ExampleServerConfig);
 polarisContainer.bind<PolarisMiddleware>(POLARIS_TYPES.PolarisMiddleware).to(ExampleMiddleware);
-let mergedContainer = Container.merge(polarisContainer, schemaContainer);
+const mergedContainer = Container.merge(polarisContainer, schemaContainer);
 // (mergedContainer as any)._bindingDictionary._map.forEach(x => {
 //     x.forEach(y=>{
 //         console.log({ serviceIdentifier: y.serviceIdentifier, implementationType: y.implementationType });
 //     })
 // });
-let server: GraphQLServer = mergedContainer.get<GraphQLServer>(POLARIS_TYPES.GraphQLServer);
+const server: GraphQLServer = mergedContainer.get<GraphQLServer>(POLARIS_TYPES.GraphQLServer);
 
 server.start();
