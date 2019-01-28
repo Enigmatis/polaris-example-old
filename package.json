@@ -37,6 +37,7 @@
     "build:copy:log-config": "shx cp log-configuration.json dist/log-configuration.json",
     "build:copy:properties": "shx cp properties.json dist/properties.json",
     "build:ts": "tsc -p tsconfig.json",
+    "dev": "ts-node --files src/index.ts",
     "clean": "rimraf dist",
     "test": "test",
     "lint": "npm run tslint-check && tslint -p .",
