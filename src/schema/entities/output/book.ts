@@ -1,7 +1,5 @@
-import {InjectableType, POLARIS_TYPES} from '@enigmatis/polaris';
-import {provide} from "inversify-binding-decorators";
-import {BookResolvers} from '../../resolvers/bookResolvers';
-import {merge} from 'lodash';
+import { InjectableType, POLARIS_TYPES } from '@enigmatis/polaris';
+import { provide } from 'inversify-binding-decorators';
 
 @provide(POLARIS_TYPES.InjectableType)
 export class Book implements InjectableType {
@@ -17,8 +15,5 @@ export class Book implements InjectableType {
                  otherBook: Book
              }
          `;
-    }
-    resolvers(): any{
-        BookResolvers
     }
 }
