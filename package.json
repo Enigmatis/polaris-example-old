@@ -2,32 +2,48 @@
   "name": "polaris-example",
   "version": "0.0.1",
   "description": "example of graphql server using polaris engine",
-  "main": "app.js",
+  "main": "src/index.js",
   "dependencies": {
-    "@enigmatis/polaris": "../polaris",
-    "@enigmatis/polaris-logs": "../polaris-logs",
+    "@enigmatis/polaris": "file:../polaris",
+    "@enigmatis/polaris-logs": "^2.1.0",
     "@types/glob": "^5.0.35",
+    "@types/graphql": "^14.0.5",
     "@types/node": "10.12.12",
-    "inversify": "^5.0.1",
-    "inversify-binding-decorators": "^4.0.0",
     "glob": "^7.1.2",
     "graphql": "^0.13.2",
-    "graphql-tools": "^4.0.3",
-    "typescript": "^3.0.1",
-    "lodash": "^4.17.5",
+    "graphql-tools": "^4.0.4",
+    "inversify": "^5.0.1",
+    "inversify-binding-decorators": "^4.0.0",
     "merge-graphql-schemas": "^1.5.8",
-    "reflect-metadata": "^0.1.12"
+    "reflect-metadata": "^0.1.13"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "^1.16.1",
+    "shx": "^0.3.2",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-consistent-codestyle": "^1.15.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.2.4"
+  },
   "resolutions": {
     "graphql": "^0.13.2"
   },
   "scripts": {
+    "build": "npm run clean && npm run build:ts && npm run build:copy",
+    "build:copy": "npm run build:copy:log-config && npm run build:copy:properties",
+    "build:copy:log-config": "shx cp log-configuration.json dist/log-configuration.json",
+    "build:copy:properties": "shx cp properties.json dist/properties.json",
+    "build:ts": "tsc -p tsconfig.json",
+    "clean": "rimraf dist",
     "test": "test",
+    "lint": "npm run tslint-check && tslint -p .",
+    "lint:fix": "npm run tslint-check && tslint -p . --fix",
+    "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "tsc": "tsc",
-    "start": "node ./dist/app.js",
-    "build": "npm install && npm link && tsc",
-    "clean": "rimraf dist"
+    "start": "ts-node ./src/index.js"
   },
   "repository": {
     "type": "git",
