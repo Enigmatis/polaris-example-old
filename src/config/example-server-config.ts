@@ -5,13 +5,13 @@ import * as polarisPropertiesPath from '../../properties.json';
 
 @injectable()
 export class ExampleServerConfig implements PolarisServerConfig {
-    public port: number;
-    public endpoint: string;
-    public applicationId: string;
-    public applicationName: string;
-    public repositoryVersion: string;
-    public environment: string;
-    public component: string;
+    port: number;
+    endpoint: string;
+    applicationId: string;
+    applicationName: string;
+    repositoryVersion: string;
+    environment: string;
+    component: string;
 
     constructor() {
         this.port = polarisPropertiesPath.port;
@@ -23,11 +23,11 @@ export class ExampleServerConfig implements PolarisServerConfig {
         this.component = polarisPropertiesPath.component;
     }
 
-    public getPolarisProperties(): PolarisProperties {
+    getPolarisProperties(): PolarisProperties {
         return new PolarisProperties(this.port, this.endpoint);
     }
 
-    public getApplicationLogProperties(): ApplicationLogProperties {
+    getApplicationLogProperties(): ApplicationLogProperties {
         const applicationLogProperties: ApplicationLogProperties = {
             id: this.applicationId,
             name: this.applicationName,

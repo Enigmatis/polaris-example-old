@@ -4,7 +4,7 @@ import { Book } from '../entities/book';
 
 @provide(POLARIS_TYPES.InjectableResolver)
 export class BookResolvers implements InjectableResolver {
-    public resolver(): any {
+    resolver(): any {
         return {
             Book: {
                 title(book: Book, _: any, context: any) {

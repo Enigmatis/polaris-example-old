@@ -21,7 +21,7 @@ const books = [
 
 @provide(POLARIS_TYPES.InjectableResolver)
 export class QueryResolvers implements InjectableResolver {
-    public resolver(): any {
+    resolver(): any {
         return {
             Query: { books: () => books },
         };

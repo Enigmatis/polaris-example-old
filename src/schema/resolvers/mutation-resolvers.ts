@@ -4,7 +4,7 @@ import { Book } from '../entities/book';
 
 @provide(POLARIS_TYPES.InjectableResolver)
 export class MutationResolvers implements InjectableResolver {
-    public resolver(): any {
+    resolver(): any {
         return {
             Mutation: {
                 updateBook(_: any, { book }: { book: Book }) {

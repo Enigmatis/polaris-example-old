@@ -5,11 +5,11 @@ import * as polarisLogConfigurationPath from '../../log-configuration.json';
 
 @injectable()
 export class ExampleLogConfig implements LogConfig {
-    public logstashHost: string;
-    public logstashPort: number;
-    public loggerLevel: string;
-    public writeToConsole: boolean;
-    public writeFullMessageToConsole: boolean;
+    logstashHost: string;
+    logstashPort: number;
+    loggerLevel: string;
+    writeToConsole: boolean;
+    writeFullMessageToConsole: boolean;
 
     constructor() {
         this.loggerLevel = polarisLogConfigurationPath.loggerLevel;
@@ -19,7 +19,7 @@ export class ExampleLogConfig implements LogConfig {
         this.writeFullMessageToConsole = polarisLogConfigurationPath.writeFullMessageToConsole;
     }
 
-    public getLogConfiguration(): LoggerConfiguration {
+    getLogConfiguration(): LoggerConfiguration {
         const loggerConfiguration: LoggerConfiguration = {
             loggerLevel: this.loggerLevel,
             logstashHost: this.logstashHost,

@@ -3,7 +3,7 @@ import { provide } from 'inversify-binding-decorators';
 
 @provide(POLARIS_TYPES.InjectableType)
 export class Mutation implements InjectableType {
-    public definition(): string {
+    definition(): string {
         return `
              type Mutation {
                  updateBook(book: BookInput!): Book 

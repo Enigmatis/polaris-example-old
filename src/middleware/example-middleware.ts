@@ -4,9 +4,9 @@ import { inject, injectable } from 'inversify';
 
 @injectable()
 export class ExampleMiddleware implements PolarisMiddleware {
-    @inject(POLARIS_TYPES.PolarisLogger) public polarisLogger!: PolarisLogger;
+    @inject(POLARIS_TYPES.PolarisLogger) polarisLogger!: PolarisLogger;
 
-    public preResolve(
+    preResolve(
         root: any,
         args: { [argName: string]: any },
         context: any,
@@ -15,7 +15,7 @@ export class ExampleMiddleware implements PolarisMiddleware {
         this.polarisLogger.debug(`from example before resolver, args: ${JSON.stringify(args)}`);
     }
 
-    public postResolve(
+    postResolve(
         root: any,
         args: { [argName: string]: any },
         context: any,
