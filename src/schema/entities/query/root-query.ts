@@ -3,8 +3,6 @@ import { provide } from 'inversify-binding-decorators';
 
 @provide(POLARIS_TYPES.InjectableType)
 export class Query implements InjectableType {
-    definition(): string {
-        return `type Query {
+    definition = `type Query {
                     books: [Book] }`;
-    }
 }
