@@ -24,7 +24,10 @@ export class ExampleServerConfig implements PolarisServerConfig {
     }
 
     getPolarisProperties(): PolarisProperties {
-        return new PolarisProperties(this.port, this.endpoint);
+        return {
+            endpoint: this.endpoint,
+            port: this.port,
+        };
     }
 
     getApplicationLogProperties(): ApplicationLogProperties {

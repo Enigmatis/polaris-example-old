@@ -3,8 +3,7 @@ import { provide } from 'inversify-binding-decorators';
 
 @provide(POLARIS_TYPES.InjectableType)
 export class Book implements InjectableType {
-    definition(): string {
-        return `
+    definition = `
              type Book implements CommonEntity {
                  id: ID!
                  creationDate: String,
@@ -15,5 +14,4 @@ export class Book implements InjectableType {
                  otherBook: Book
              }
          `;
-    }
 }
