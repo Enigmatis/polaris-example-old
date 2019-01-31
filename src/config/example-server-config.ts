@@ -30,14 +30,13 @@ export class ExampleServerConfig implements PolarisServerConfig {
         };
     }
 
-    getApplicationLogProperties(): ApplicationLogProperties {
-        const applicationLogProperties: ApplicationLogProperties = {
+    getPropertiesForLog(): ApplicationLogProperties {
+        return {
             id: this.applicationId,
             name: this.applicationName,
             repositoryVersion: this.repositoryVersion,
             environment: this.environment,
             component: this.component,
         };
-        return applicationLogProperties;
     }
 }
