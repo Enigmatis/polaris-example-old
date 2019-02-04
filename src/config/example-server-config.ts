@@ -30,7 +30,7 @@ export class ExampleServerConfig implements PolarisServerConfig {
         };
     }
 
-    getApplicationLogProperties(): ApplicationLogProperties {
+    getPropertiesForLog(): ApplicationLogProperties {
         const applicationLogProperties: ApplicationLogProperties = {
             id: this.applicationId,
             name: this.applicationName,

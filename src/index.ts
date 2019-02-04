@@ -1,6 +1,6 @@
 import {
     GraphQLServer,
-    LogConfig,
+    LoggerConfig,
     POLARIS_TYPES,
     polarisContainer,
     PolarisMiddleware,
@@ -14,7 +14,7 @@ import { ExampleMiddleware } from './middleware/example-middleware';
 import { schemaContainer } from './schema/schema';
 import {ExampleHeadersConfig} from "./config/example-headers-config";
 
-polarisContainer.bind<LogConfig>(POLARIS_TYPES.LogConfig).to(ExampleLogConfig);
+polarisContainer.bind<LoggerConfig>(POLARIS_TYPES.LoggerConfig).to(ExampleLogConfig);
 polarisContainer
     .bind<PolarisServerConfig>(POLARIS_TYPES.PolarisServerConfig)
     .to(ExampleServerConfig);

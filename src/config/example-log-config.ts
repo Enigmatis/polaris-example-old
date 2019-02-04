@@ -1,10 +1,10 @@
-import { LogConfig } from '@enigmatis/polaris';
+import { LoggerConfig } from '@enigmatis/polaris';
 import { LoggerConfiguration } from '@enigmatis/polaris-logs';
 import { injectable } from 'inversify';
 import * as polarisLogConfigurationPath from '../../log-configuration.json';
 
 @injectable()
-export class ExampleLogConfig implements LogConfig {
+export class ExampleLogConfig implements LoggerConfig {
     logstashHost: string;
     logstashPort: number;
     loggerLevel: string;

@@ -7,7 +7,7 @@ const bible: Book = {
     title: 'the bible',
     author: 'god',
     dataVersion: 2,
-    realityId: 0,
+    realityId: '0',
     creationDate: '1.1.1',
     lastUpdateDate: '12.1.12',
     deleted: false
@@ -17,7 +17,7 @@ const jurassicPark: Book = {
     title: 'Jurassic Park',
     author: 'Michael Crichton',
     dataVersion: 2,
-    realityId: 1,
+    realityId: '1',
     creationDate: '1.1.1',
     lastUpdateDate: '12.1.12',
     otherBook: bible,
@@ -31,9 +31,9 @@ const harryPotter :Book= {
     otherBook: bible,
     creationDate: '1.1.1',
     lastUpdateDate: '12.1.12',
-    realityId:2,
+    realityId:'2',
     deleted:false
-}
+};
 const www :Book= {
     id: '5',
     title: "w",
@@ -42,9 +42,9 @@ const www :Book= {
     otherBook: jurassicPark,
     creationDate: '1.1.1',
     lastUpdateDate: '12.1.12',
-    realityId:2,
+    realityId:'2',
     deleted:false
-}
+};
 
 const books: Book[] = [
     harryPotter,
