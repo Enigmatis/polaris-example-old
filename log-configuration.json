@@ -3,5 +3,5 @@
   "logstashPort": 12345,
   "loggerLevel": "debug",
   "writeToConsole":  true,
-  "writeFullMessageToConsole": true
+  "writeFullMessageToConsole": false
 }
