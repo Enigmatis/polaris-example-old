@@ -15,7 +15,7 @@ export class ExampleMiddleware implements PolarisMiddleware {
     }
 
     postResolve({ result }: ResponseMiddlewareParams): string | null{
-        return null;
+        return result;
     }
 
 }
