@@ -3,7 +3,7 @@ import {
     LoggerConfig,
     POLARIS_TYPES,
     polarisContainer,
-    PolarisMiddleware,
+    Middleware,
     PolarisServerConfig,
     HeaderConfig
 } from '@enigmatis/polaris';
@@ -21,7 +21,7 @@ polarisContainer
 polarisContainer
     .bind<HeaderConfig>(POLARIS_TYPES.HeaderConfig)
     .to(ExampleHeadersConfig);
-polarisContainer.bind<PolarisMiddleware>(POLARIS_TYPES.PolarisMiddleware).to(ExampleMiddleware);
+polarisContainer.bind<Middleware>(POLARIS_TYPES.Middleware).to(ExampleMiddleware);
 const mergedContainer = Container.merge(polarisContainer, schemaContainer);
 const server: GraphQLServer = mergedContainer.get<GraphQLServer>(POLARIS_TYPES.GraphQLServer);
 

@@ -1,17 +1,15 @@
 import {
-    POLARIS_TYPES,
-    PolarisLogger,
-    PolarisMiddleware,
+    Middleware,
     RequestMiddlewareParams,
     ResponseMiddlewareParams,
-    GraphqlLogger
 } from '@enigmatis/polaris';
-import { inject, injectable } from 'inversify';
+import { injectable} from 'inversify';
 
 @injectable()
-export class ExampleMiddleware implements PolarisMiddleware {
+export class ExampleMiddleware implements Middleware {
 
     preResolve({ args }: RequestMiddlewareParams) {
+        return;
     }
 
     postResolve({ result }: ResponseMiddlewareParams): string | null{

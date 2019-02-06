@@ -4,20 +4,13 @@ import * as headersConfigurationPath from '../../headers-configuration.json';
 
 @injectable()
 export class ExampleHeadersConfig implements HeaderConfig {
-    dataVersion?: boolean;
-    realityId?: boolean;
+
+    headersConfiguration: HeadersConfiguration;
 
     constructor() {
-        const headersConfiguration: HeadersConfiguration = headersConfigurationPath;
-        this.dataVersion =  headersConfiguration.dataVersion;
-        this.realityId = headersConfiguration.realityId;
-    }
-
-    getHeadersConfiguration(): HeadersConfiguration {
-        const headerConfiguration: HeadersConfiguration = {
-            dataVersion: this.dataVersion,
-            realityId: this.realityId
+        this.headersConfiguration = {
+            dataVersion: headersConfigurationPath.dataVersion,
+            realityId: headersConfigurationPath.realityId
         };
-        return headerConfiguration;
     }
 }
