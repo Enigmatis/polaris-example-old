@@ -4,29 +4,34 @@
   "description": "example of graphql server using polaris engine",
   "main": "src/index.js",
   "dependencies": {
-    "@enigmatis/polaris": "file:../polaris",
-    "@enigmatis/polaris-logs": "^2.1.0",
+    "@enigmatis/mongo-driver": "^1.0.1",
+    "@enigmatis/polaris": "^1.4.0",
+    "@enigmatis/polaris-logs": "^2.2.1",
+    "@types/dotenv": "^6.1.0",
     "@types/glob": "^5.0.35",
     "@types/graphql": "^14.0.5",
     "@types/node": "10.12.12",
+    "dotenv": "^6.2.0",
     "glob": "^7.1.2",
     "graphql": "^0.13.2",
     "graphql-tools": "^4.0.4",
     "inversify": "^5.0.1",
     "inversify-binding-decorators": "^4.0.0",
     "merge-graphql-schemas": "^1.5.8",
+    "mongoose": "^5.4.10",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-    "prettier": "^1.16.1",
+    "@types/mongoose": "^5.3.12",
+    "prettier": "^1.16.4",
     "shx": "^0.3.2",
     "ts-node": "^8.0.2",
     "tslint": "^5.12.1",
-    "tslint-config-prettier": "^1.17.0",
+    "tslint-config-prettier": "^1.18.0",
     "tslint-consistent-codestyle": "^1.15.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.2.4"
+    "typescript": "^3.3.1"
   },
   "resolutions": {
     "graphql": "^0.13.2"
