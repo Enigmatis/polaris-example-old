@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "dependencies": {
     "@enigmatis/polaris": "file:../polaris",
-    "@enigmatis/polaris-logs": "2.1.0",
+    "@enigmatis/polaris-logs": "^2.1.0",
     "@types/glob": "^5.0.35",
     "@types/graphql": "^14.0.5",
     "@types/node": "10.12.12",
@@ -32,7 +32,7 @@
     "graphql": "^0.13.2"
   },
   "scripts": {
-    "build": "npm run build:ts && npm run build:copy",
+    "build": "npm run clean && npm run build:ts && npm run build:copy",
     "build:copy": "npm run build:copy:log-config && npm run build:copy:properties && npm run build:copy:headers-config",
     "build:copy:log-config": "shx cp log-configuration.json dist/log-configuration.json",
     "build:copy:properties": "shx cp properties.json dist/properties.json",
