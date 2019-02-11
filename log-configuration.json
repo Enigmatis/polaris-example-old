@@ -2,6 +2,6 @@
   "logstashHost": "127.0.0.1",
   "logstashPort": 12345,
   "loggerLevel": "debug",
-  "writeToConsole": true,
-  "writeFullMessageToConsole": true
+  "writeToConsole":  true,
+  "writeFullMessageToConsole": false
 }
