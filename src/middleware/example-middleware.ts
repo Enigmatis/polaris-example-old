@@ -7,7 +7,6 @@ import { injectable} from 'inversify';
 
 @injectable()
 export class ExampleMiddleware implements Middleware {
-
     preResolve({ args }: RequestMiddlewareParams) {
         return;
     }
