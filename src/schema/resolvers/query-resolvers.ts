@@ -1,6 +1,6 @@
-import {InjectableResolver, POLARIS_TYPES} from '@enigmatis/polaris';
-import {provide} from 'inversify-binding-decorators';
-import {Book} from "../entities/book";
+import { InjectableResolver, POLARIS_TYPES } from '@enigmatis/polaris';
+import { provide } from 'inversify-binding-decorators';
+import { Book } from '../entities/book';
 
 const bible: Book = {
     id: '3',
@@ -10,7 +10,7 @@ const bible: Book = {
     realityId: '0',
     creationDate: '1.1.1',
     lastUpdateDate: '12.1.12',
-    deleted: false
+    deleted: false,
 };
 const jurassicPark: Book = {
     id: '2',
@@ -21,9 +21,9 @@ const jurassicPark: Book = {
     creationDate: '1.1.1',
     lastUpdateDate: '12.1.12',
     otherBook: bible,
-    deleted: false
+    deleted: false,
 };
-const harryPotter :Book= {
+const harryPotter: Book = {
     id: '1',
     title: "Harry Potter and the Sorcerer's stone",
     author: 'J.K. Rowling',
@@ -31,33 +31,28 @@ const harryPotter :Book= {
     otherBook: bible,
     creationDate: '1.1.1',
     lastUpdateDate: '12.1.12',
-    realityId:'2',
-    deleted:false
+    realityId: '2',
+    deleted: false,
 };
-const www :Book= {
+const www: Book = {
     id: '5',
-    title: "w",
+    title: 'w',
     author: 'k',
     dataVersion: 4,
     otherBook: jurassicPark,
     creationDate: '1.1.1',
     lastUpdateDate: '12.1.12',
-    realityId:'2',
-    deleted:false
+    realityId: '2',
+    deleted: false,
 };
 
-const books: Book[] = [
-    harryPotter,
-    jurassicPark,
-    bible,
-    www
-];
+const books: Book[] = [harryPotter, jurassicPark, bible, www];
 
 @provide(POLARIS_TYPES.InjectableResolver)
 export class QueryResolvers implements InjectableResolver {
     resolver(): any {
         return {
-            Query: {books: () => books},
+            Query: { books: () => books },
         };
     }
 }

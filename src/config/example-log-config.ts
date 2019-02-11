@@ -16,5 +16,4 @@ export class ExampleLogConfig implements LoggerConfig {
             writeFullMessageToConsole: polarisLogConfigurationPath.writeFullMessageToConsole,
         };
     }
-
 }

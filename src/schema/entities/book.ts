@@ -1,4 +1,4 @@
-import {RepositoryEntity} from "@enigmatis/polaris";
+import { RepositoryEntity } from '@enigmatis/polaris';
 
 export interface Book extends RepositoryEntity {
     id: string;
