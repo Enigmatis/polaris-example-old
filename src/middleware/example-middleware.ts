@@ -1,25 +1,18 @@
 import {
-    GraphqlLogger,
-    MiddlewareParams,
-    POLARIS_TYPES,
-    PolarisMiddleware,
-    PostMiddlewareParams,
+    Middleware,
+    RequestMiddlewareParams,
+    ResponseMiddlewareParams,
 } from '@enigmatis/polaris';
-import { inject, injectable } from 'inversify';
+import { injectable} from 'inversify';
 
 @injectable()
-export class ExampleMiddleware implements PolarisMiddleware {
-    @inject(POLARIS_TYPES.GraphqlLogger) logger!: GraphqlLogger;
-
-    preResolve({ args, context }: MiddlewareParams) {
-        this.logger.debug(`from example before resolver, args: ${JSON.stringify(args)}`, {
-            context,
-        });
+export class ExampleMiddleware implements Middleware {
+    preResolve({ args }: RequestMiddlewareParams) {
+        return;
     }
 
-    postResolve({ result, context }: PostMiddlewareParams): void {
-        this.logger.debug(`from example after resolver, result: ${JSON.stringify(result)}`, {
-            context,
-        });
+    postResolve({ result }: ResponseMiddlewareParams): string | null{
+        return result;
     }
+
 }

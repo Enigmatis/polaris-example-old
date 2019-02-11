@@ -4,8 +4,9 @@ import {
     LoggerConfig,
     POLARIS_TYPES,
     polarisContainer,
-    PolarisMiddleware,
+    Middleware,
     PolarisServerConfig,
+    HeaderConfig
 } from '@enigmatis/polaris';
 import { Container } from 'inversify';
 
@@ -18,12 +19,16 @@ import { ExampleMiddleware } from './middleware/example-middleware';
 import { schemaContainer } from './schema/schema';
 import { BookRepository } from './dal/book-repository';
 import { MongooseConnection } from '@enigmatis/mongo-driver';
+import {ExampleHeadersConfig} from "./config/example-headers-config";
 
 polarisContainer.bind<LoggerConfig>(POLARIS_TYPES.LoggerConfig).to(ExampleLogConfig);
 polarisContainer
     .bind<PolarisServerConfig>(POLARIS_TYPES.PolarisServerConfig)
     .to(ExampleServerConfig);
-polarisContainer.bind<PolarisMiddleware>(POLARIS_TYPES.PolarisMiddleware).to(ExampleMiddleware);
+polarisContainer
+    .bind<HeaderConfig>(POLARIS_TYPES.HeaderConfig)
+    .to(ExampleHeadersConfig);
+polarisContainer.bind<Middleware>(POLARIS_TYPES.Middleware).to(ExampleMiddleware);
 const mergedContainer = Container.merge(polarisContainer, schemaContainer);
 const server: GraphQLServer = mergedContainer.get<GraphQLServer>(POLARIS_TYPES.GraphQLServer);
 
