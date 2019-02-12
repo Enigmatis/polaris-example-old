@@ -1,9 +1,5 @@
-import {
-    Middleware,
-    RequestMiddlewareParams,
-    ResponseMiddlewareParams,
-} from '@enigmatis/polaris';
-import { injectable} from 'inversify';
+import { Middleware, RequestMiddlewareParams, ResponseMiddlewareParams } from '@enigmatis/polaris';
+import { injectable } from 'inversify';
 
 @injectable()
 export class ExampleMiddleware implements Middleware {
@@ -11,8 +7,7 @@ export class ExampleMiddleware implements Middleware {
         return;
     }
 
-    postResolve({ result }: ResponseMiddlewareParams): string | null{
+    postResolve({ result }: ResponseMiddlewareParams): string | null {
         return result;
     }
-
 }
