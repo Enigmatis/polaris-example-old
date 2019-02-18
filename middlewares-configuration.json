@@ -1,0 +1,4 @@
+{
+  "allowRealityMiddleware": true,
+  "allowDataVersionMiddleware": true
+}
