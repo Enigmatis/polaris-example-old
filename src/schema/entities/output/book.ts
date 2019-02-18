@@ -9,9 +9,9 @@ export class Book implements InjectableType {
                  creationDate: String,
                  lastUpdateDate: String,
                  dataVersion: Int!,
-                 title: String @upper,
+                 title: String,
                  author: String,
-                 otherBook: Book
+                 realityId: Int!
              }
          `;
 }
