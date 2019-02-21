@@ -1,6 +1,6 @@
 import { MiddlewaresConfig, MiddlewaresConfiguration } from '@enigmatis/polaris';
 import { injectable } from 'inversify';
-import * as headersConfigurationPath from '../../middlewares-configuration.json';
+import * as middlewaresConfiguration from '../../middlewares-configuration.json';
 
 @injectable()
 export class ExampleMiddlewaresConfig implements MiddlewaresConfig {
@@ -8,8 +8,8 @@ export class ExampleMiddlewaresConfig implements MiddlewaresConfig {
 
     constructor() {
         this.middlewaresConfiguration = {
-            allowDataVersionMiddleware: headersConfigurationPath.allowDataVersionMiddleware,
-            allowRealityMiddleware: headersConfigurationPath.allowRealityMiddleware,
+            allowDataVersionMiddleware: middlewaresConfiguration.allowDataVersionMiddleware,
+            allowRealityMiddleware: middlewaresConfiguration.allowRealityMiddleware,
         };
     }
 }
