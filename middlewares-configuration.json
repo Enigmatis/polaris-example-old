@@ -1,4 +1,4 @@
 {
-  "realityId": true,
-  "dataVersion": true
+  "allowDataVersionMiddleware": true,
+  "allowRealityMiddleware": true
 }

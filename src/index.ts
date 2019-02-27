@@ -2,7 +2,8 @@ import { MongooseConnection } from '@enigmatis/mongo-driver';
 import {
     GraphQLServer,
     LoggerConfig,
-    Middleware, MiddlewaresConfig,
+    Middleware,
+    MiddlewaresConfig,
     POLARIS_TYPES,
     polarisContainer,
     PolarisServerConfig,
@@ -10,8 +11,8 @@ import {
 import { GraphqlLogger } from '@enigmatis/utills';
 import { config } from 'dotenv';
 import { Container } from 'inversify';
-import { ExampleMiddlewaresConfig } from './config/example-middlewares-config';
 import { ExampleLogConfig } from './config/example-log-config';
+import { ExampleMiddlewaresConfig } from './config/example-middlewares-config';
 import { ExampleServerConfig } from './config/example-server-config';
 import { ExampleMiddleware } from './middleware/example-middleware';
 import { schemaContainer } from './schema/schema';
@@ -22,7 +23,9 @@ polarisContainer.bind<LoggerConfig>(POLARIS_TYPES.LoggerConfig).to(ExampleLogCon
 polarisContainer
     .bind<PolarisServerConfig>(POLARIS_TYPES.PolarisServerConfig)
     .to(ExampleServerConfig);
-polarisContainer.bind<MiddlewaresConfig>(POLARIS_TYPES.MiddlewaresConfig).to(ExampleMiddlewaresConfig);
+polarisContainer
+    .bind<MiddlewaresConfig>(POLARIS_TYPES.MiddlewaresConfig)
+    .to(ExampleMiddlewaresConfig);
 polarisContainer.bind<Middleware>(POLARIS_TYPES.Middleware).to(ExampleMiddleware);
 const mergedContainer = Container.merge(polarisContainer, schemaContainer);
 const server: GraphQLServer = mergedContainer.get<GraphQLServer>(POLARIS_TYPES.GraphQLServer);
