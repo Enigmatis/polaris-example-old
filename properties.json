@@ -1,5 +1,5 @@
 {
-  "port": 8089,
+  "port": 8085,
   "endpoint": "/customEndpoint",
 
   "applicationId": "p01aris-example",
