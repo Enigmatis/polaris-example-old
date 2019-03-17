@@ -23,7 +23,9 @@ polarisContainer.bind<LoggerConfig>(POLARIS_TYPES.LoggerConfig).to(ExampleLogCon
 polarisContainer
     .bind<PolarisServerConfig>(POLARIS_TYPES.PolarisServerConfig)
     .to(ExampleServerConfig);
-polarisContainer.bind<MiddlewaresConfig>(POLARIS_TYPES.MiddlewaresConfig).to(ExampleMiddlewaresConfig);
+polarisContainer
+    .bind<MiddlewaresConfig>(POLARIS_TYPES.MiddlewaresConfig)
+    .to(ExampleMiddlewaresConfig);
 polarisContainer.bind<Middleware>(POLARIS_TYPES.Middleware).to(ExampleMiddleware);
 const mergedContainer = Container.merge(polarisContainer, schemaContainer);
 const server: GraphQLServer = mergedContainer.get<GraphQLServer>(POLARIS_TYPES.GraphQLServer);
