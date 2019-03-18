@@ -1,6 +1,6 @@
-import {RepositoryModel} from "@enigmatis/mongo-driver";
+import { RepositoryModel } from '@enigmatis/mongo-driver';
 import { Model } from 'mongoose';
-import {InnerModelType} from "../../../mongo-driver/src/types";
+import { InnerModelType } from '../../../mongo-driver/src/types';
 
 export class QueryIrrResult {
     result: any[];
