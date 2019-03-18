@@ -4,7 +4,7 @@
   "description": "example of graphql server using polaris engine",
   "main": "src/index.js",
   "dependencies": {
-    "@enigmatis/mongo-driver": "file:../mongo-driver",
+    "@enigmatis/mongo-driver": "^1.4.0",
     "@enigmatis/polaris": "^2.2.1",
     "@enigmatis/polaris-logs": "^2.2.1",
     "@enigmatis/utills": "^1.1.0",
@@ -42,7 +42,7 @@
     "build:copy": "npm run build:copy:log-config && npm run build:copy:properties && npm run build:copy:headers-config",
     "build:copy:log-config": "shx cp log-configuration.json dist/log-configuration.json",
     "build:copy:properties": "shx cp properties.json dist/properties.json",
-    "build:copy:headers-config": "shx cp headers-configuration.json dist/headers-configuration.json",
+    "build:copy:middlewares-config": "shx cp middlewares-configuration.json dist/middlewares-configuration.json",
     "build:ts": "tsc -p tsconfig.json",
     "dev": "ts-node --files src/index.ts",
     "clean": "rimraf dist",
