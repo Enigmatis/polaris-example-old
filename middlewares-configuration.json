@@ -1,4 +1,4 @@
 {
-  "allowRealityMiddleware": true,
-  "allowDataVersionMiddleware": true
+  "allowDataVersionMiddleware": true,
+  "allowRealityMiddleware": true
 }

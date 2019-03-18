@@ -1,0 +1,8 @@
+overwrite: true
+schema: "http://localhost:8085/customEndpoint"
+generates:
+  src/schema/entities/types.d.ts:
+    plugins:
+      - "typescript-common"
+      - "typescript-server"
+      - "typescript-resolvers"
