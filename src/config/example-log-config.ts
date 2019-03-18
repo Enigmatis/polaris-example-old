@@ -10,8 +10,7 @@ export class ExampleLogConfig implements LoggerConfig {
     constructor() {
         this.loggerConfiguration = {
             loggerLevel: polarisLogConfigurationPath.loggerLevel,
-            logstashHost: polarisLogConfigurationPath.logstashHost,
-            logstashPort: polarisLogConfigurationPath.logstashPort,
+            logstashConfigurations: polarisLogConfigurationPath.logstashConfigurations,
             writeToConsole: polarisLogConfigurationPath.writeToConsole,
             writeFullMessageToConsole: polarisLogConfigurationPath.writeFullMessageToConsole,
         };
