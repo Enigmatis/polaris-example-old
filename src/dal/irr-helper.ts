@@ -16,7 +16,7 @@ export const QueryWithIrrelevant = async <T extends RepositoryModel>(
     model: Model<InnerModelType<T>>,
     result: T[],
 ): Promise<QueryIrrResult> => {
-    const irelevant = await model.find(
+    const irrelevant = await model.find(
         {
             _id: { $nin: result.map(x => x._id) },
             deleted: { $in: [true, false] },
@@ -24,5 +24,5 @@ export const QueryWithIrrelevant = async <T extends RepositoryModel>(
         { _id: true },
     );
 
-    return new QueryIrrResult(result, irelevant);
+    return new QueryIrrResult(result, irrelevant);
 };

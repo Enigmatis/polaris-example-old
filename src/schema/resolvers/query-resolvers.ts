@@ -26,7 +26,7 @@ export class QueryResolvers implements InjectableResolver {
                 ) =>
                     QueryWithIrrelevant<Book>(
                         BookModelPerReality(realityId),
-                        await BookModelPerReality(realityId).find({ title: '/^m/' }),
+                        await BookModelPerReality(realityId).find({ title: { $regex: '^' + startsWith, $options: 'i'}}),
                     ),
             },
         };
