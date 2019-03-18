@@ -2,15 +2,10 @@ import { InjectableResolver, POLARIS_TYPES } from '@enigmatis/polaris';
 import { provide } from 'inversify-binding-decorators';
 import { BookRepository } from '../../dal/book-repository';
 import { Book } from '../entities/book';
+import { BookModelPerReality } from '../../dal/book-model';
 
 @provide(POLARIS_TYPES.InjectableResolver)
 export class QueryResolvers implements InjectableResolver {
-    bookRepository: BookRepository;
-
-    constructor() {
-        this.bookRepository = new BookRepository();
-    }
-
     resolver(): any {
         return {
             Query: {
@@ -20,7 +15,7 @@ export class QueryResolvers implements InjectableResolver {
                         realityId,
                         includeOperational,
                     }: { realityId: number; includeOperational: boolean },
-                ) => this.bookRepository.findAll(realityId, includeOperational),
+                ) => BookModelPerReality(realityId).find({}),
             },
         };
     }
