@@ -1,6 +1,8 @@
 import { InjectableResolver, POLARIS_TYPES } from '@enigmatis/polaris';
 import { provide } from 'inversify-binding-decorators';
-import { BookModelPerReality } from '../../dal/book-model';
+import {Book, BookModelPerReality} from '../../dal/book-model';
+import {QueryWithIrrelevant} from "../../dal/irr-helper";
+import {InnerModelType} from "../../../../mongo-driver/src/types";
 
 @provide(POLARIS_TYPES.InjectableResolver)
 export class QueryResolvers implements InjectableResolver {
@@ -14,6 +16,15 @@ export class QueryResolvers implements InjectableResolver {
                         includeOperational,
                     }: { realityId: number; includeOperational: boolean },
                 ) => BookModelPerReality(realityId).find({}),
+                booksStartWith: async (
+                    parent: object | null,
+                    {
+                        realityId,
+                        startsWith,
+                        includeOperational,
+                    }: { realityId: number; startsWith: string; includeOperational: boolean },
+                ) => QueryWithIrrelevant<Book>(BookModelPerReality(realityId), await BookModelPerReality(realityId).find({title:"/^m/"})),
+
             },
         };
     }

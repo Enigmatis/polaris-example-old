@@ -5,5 +5,6 @@ import { provide } from 'inversify-binding-decorators';
 export class Query implements InjectableType {
     definition = `type Query {
                     books(realityId:Int!, includeOperational:Boolean): [Book] 
+                    booksStartWith(realityId:Int!, startsWith:String!, includeOperational:Boolean): [Book] 
                     }`;
 }
