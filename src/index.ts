@@ -1,3 +1,4 @@
+import { initConnection } from '@enigmatis/mongo-driver';
 import {
     GraphQLServer,
     LoggerConfig,
@@ -15,7 +16,6 @@ import { ExampleMiddlewaresConfig } from './config/example-middlewares-config';
 import { ExampleServerConfig } from './config/example-server-config';
 import { ExampleMiddleware } from './middleware/example-middleware';
 import { schemaContainer } from './schema/schema';
-import { initConnection } from '@enigmatis/mongo-driver';
 
 config();
 
@@ -34,10 +34,7 @@ const init = async () => {
     const logger = mergedContainer.get<GraphqlLogger<any>>(POLARIS_TYPES.GraphqlLogger);
     const connectionString = process.env.MONGO_CONNECTION_STRING;
     if (connectionString) {
-        await initConnection(
-            { connectionString, waitUntilReconnectInMs: 5000 },
-            logger as any,
-        );
+        await initConnection({ connectionString, waitUntilReconnectInMs: 5000 }, logger as any);
         server.start();
     } else {
         logger.error(`environment variable 'MONGO_CONNECTION_STRING' not found`);
