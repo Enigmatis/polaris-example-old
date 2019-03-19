@@ -5,6 +5,7 @@ import { provide } from 'inversify-binding-decorators';
 export class Mutation implements InjectableType {
     definition = `
              type Mutation {
-                 updateBook(book: BookInput!): Book 
+                 createBook(book: BookInput!): Book,
+                 updateBook(bookId: String!, update: UpdateBookInput): Book
              }`;
 }

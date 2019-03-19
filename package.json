@@ -20,7 +20,7 @@
     "inversify": "^5.0.1",
     "inversify-binding-decorators": "^4.0.0",
     "merge-graphql-schemas": "^1.5.8",
-    "mongoose": "^5.4.13",
+    "mongoose": "^5.4.19",
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {

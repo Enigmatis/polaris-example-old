@@ -1,8 +1,7 @@
 import { InjectableResolver, POLARIS_TYPES, PolarisContext } from '@enigmatis/polaris';
 import { provide } from 'inversify-binding-decorators';
-import { BookRepository } from '../../dal/book-repository';
-import { Book } from '../entities/book';
 import { BookModelPerReality } from '../../dal/book-model';
+import { UserInputError } from 'apollo-server-koa';
 
 @provide(POLARIS_TYPES.InjectableResolver)
 export class QueryResolvers implements InjectableResolver {
