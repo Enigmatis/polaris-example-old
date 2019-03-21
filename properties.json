@@ -6,5 +6,6 @@
   "applicationName": "polaris-example",
   "repositoryVersion": "0.1",
   "environment": "dev",
-  "component": "compo"
+  "component": "compo",
+  "includeSubscription": true
 }

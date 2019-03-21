@@ -24,7 +24,6 @@
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-    "@types/mongoose": "^5.3.22",
     "graphql-code-generator": "^0.18.0",
     "graphql-codegen-typescript-common": "0.18.0",
     "graphql-codegen-typescript-resolvers": "0.18.0",
