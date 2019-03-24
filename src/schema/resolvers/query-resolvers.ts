@@ -1,7 +1,7 @@
+import { QueryWithIrrelevant } from '@enigmatis/mongo-driver';
 import { InjectableResolver, POLARIS_TYPES, PolarisContext } from '@enigmatis/polaris';
 import { provide } from 'inversify-binding-decorators';
 import { Book, BookModelPerReality } from '../../dal/book-model';
-import { QueryWithIrrelevant } from '../../dal/irr-helper';
 
 @provide(POLARIS_TYPES.InjectableResolver)
 export class QueryResolvers implements InjectableResolver {
@@ -29,7 +29,7 @@ export class QueryResolvers implements InjectableResolver {
                         await BookModelPerReality(realityId).find({
                             title: { $regex: '^' + startsWith, $options: 'i' },
                         }),
-                        context,
+                        context.headers.dataVersion,
                     ),
             },
         };
