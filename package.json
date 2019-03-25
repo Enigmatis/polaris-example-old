@@ -7,7 +7,7 @@
     "@enigmatis/mongo-driver": "file:../mongo-driver",
     "@enigmatis/polaris": "file:../polaris",
     "@enigmatis/polaris-logs": "^2.5.0",
-    "@enigmatis/utills": "^1.2.0",
+    "@enigmatis/utills": "file:../utills",
     "@types/dotenv": "^6.1.0",
     "@types/glob": "^5.0.35",
     "@types/graphql": "^14.0.7",
