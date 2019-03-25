@@ -12,6 +12,7 @@ export class ExampleServerConfig implements PolarisServerConfig {
         this.polarisProperties = {
             endpoint: polarisPropertiesPath.endpoint,
             port: polarisPropertiesPath.port,
+            includeSubscription: polarisPropertiesPath.includeSubscription,
         };
         this.applicationLogProperties = {
             id: polarisPropertiesPath.applicationId,
