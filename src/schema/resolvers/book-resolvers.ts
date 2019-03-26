@@ -1,20 +1,30 @@
 import { InjectableResolver, POLARIS_TYPES } from '@enigmatis/polaris';
 import { provide } from 'inversify-binding-decorators';
-import { Book } from '../entities/book';
+import {
+    bookQueryResolver,
+    createBookResolver,
+    subscribeResolver,
+    titleResolver,
+    updateBookResolver,
+} from './book-resolvers-functions';
 
 @provide(POLARIS_TYPES.InjectableResolver)
 export class BookResolvers implements InjectableResolver {
-    resolver(): any {
-        return {
-            Book: {
-                title(book: Book, _: any, context: any) {
-                    const headers = context.headers;
-                    if (headers.dataVersion !== undefined) {
-                        return book.title + ' (version ' + headers.dataVersion + ')';
-                    }
-                    return 'Special Edition: ' + book.title;
-                },
+    resolver = () => ({
+        Book: {
+            title: titleResolver,
+        },
+        Query: {
+            books: bookQueryResolver,
+        },
+        Mutation: {
+            createBook: createBookResolver,
+            updateBook: updateBookResolver,
+        },
+        Subscription: {
+            bookChanged: {
+                subscribe: subscribeResolver,
             },
-        };
-    }
+        },
+    });
 }
