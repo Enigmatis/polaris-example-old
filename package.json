@@ -4,8 +4,8 @@
   "description": "example of graphql server using polaris engine",
   "main": "src/index.js",
   "dependencies": {
-    "@enigmatis/mongo-driver": "file:../mongo-driver",
-    "@enigmatis/polaris": "file:../polaris",
+    "@enigmatis/mongo-driver": "^1.5.0",
+    "@enigmatis/polaris": "^2.3.0",
     "@enigmatis/polaris-logs": "^2.5.0",
     "@enigmatis/utills": "^1.2.0",
     "@types/dotenv": "^6.1.0",
