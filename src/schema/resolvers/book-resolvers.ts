@@ -1,7 +1,8 @@
 import { InjectableResolver, POLARIS_TYPES } from '@enigmatis/polaris';
 import { provide } from 'inversify-binding-decorators';
 import {
-    bookQueryResolver, bookStartWithQueryResolver,
+    bookQueryResolver,
+    bookStartWithQueryResolver,
     createBookResolver,
     subscribeResolver,
     titleResolver,
