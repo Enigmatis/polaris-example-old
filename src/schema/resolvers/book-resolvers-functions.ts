@@ -1,5 +1,5 @@
 import { QueryWithIrrelevant } from "@enigmatis/mongo-driver";
-import { QueryIrrResult } from "@enigmatis/utills";
+import { QueryIrrelevantResult } from "@enigmatis/utills";
 import { PolarisContext } from '@enigmatis/polaris';
 import { UserInputError } from 'apollo-server-koa';
 import { BookModelPerReality } from '../../dal/book-model';
