@@ -1,17 +1,14 @@
-import { CommonEntityInterface, InjectableType, POLARIS_TYPES } from '@enigmatis/polaris';
-import { Container } from 'inversify';
-import { buildProviderModule } from 'inversify-binding-decorators';
-import path = require('path');
-import 'reflect-metadata';
-import { requireAllInFolder } from '../utils/require-all-in-folder';
-// Require all types and resolvers so they can be injected later
-requireAllInFolder(path.join(__dirname, './entities/**/*'));
-requireAllInFolder(path.join(__dirname, './resolvers/**/*'));
+import { makeExecutablePolarisSchema } from '@enigmatis/polaris';
+import { GraphQLSchema } from 'graphql';
+import { resolvers } from './resolvers/book-resolvers';
+import { Book, BookInput, Mutation, Query, Subscription } from './types/schema-types';
 
-// Create container
-export const schemaContainer = new Container();
-schemaContainer.load(buildProviderModule());
-schemaContainer
-    .bind<CommonEntityInterface>(POLARIS_TYPES.CommonEntityInterface)
-    .to(CommonEntityInterface);
-schemaContainer.bind<InjectableType>(POLARIS_TYPES.InjectableType).to(CommonEntityInterface);
+const typesArray = [Book, BookInput, Mutation, Query, Subscription];
+const resolversArray = [resolvers];
+export const schema: GraphQLSchema = makeExecutablePolarisSchema({
+    typeDefs: typesArray,
+    resolvers: resolversArray,
+    resolverValidationOptions: {
+        requireResolversForResolveType: false,
+    },
+});
