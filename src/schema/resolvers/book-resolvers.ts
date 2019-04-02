@@ -17,7 +17,7 @@ export class BookResolvers implements InjectableResolver {
         },
         Query: {
             books: bookQueryResolver,
-            booksStartWith: bookStartWithQueryResolver
+            booksStartWith: bookStartWithQueryResolver,
         },
         Mutation: {
             createBook: createBookResolver,
