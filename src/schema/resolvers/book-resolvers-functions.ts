@@ -57,9 +57,10 @@ export const bookStartWithQueryResolver = async (
     if (!Number.isInteger(realityId as any)) {
         throw new UserInputError('please provide reality-id header');
     } else {
+        const bookModel = BookModelPerReality(context);
         return QueryWithIrrelevant(
-            BookModelPerReality(context),
-            await BookModelPerReality(context).find({
+            bookModel,
+            await bookModel.find({
                 title: { $regex: '^' + query.startsWith, $options: 'i' },
             }),
             dataVersion,
