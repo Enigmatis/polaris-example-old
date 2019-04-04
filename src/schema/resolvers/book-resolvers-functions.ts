@@ -48,7 +48,7 @@ export const bookQueryResolver = async (
         return BookModelPerReality(context).find({});
     }
 };
-export const bookStartWithQueryResolver = async (
+export const bookStartsWithQueryResolver = async (
     parent: object | null,
     query: any,
     context: PolarisContext,

@@ -1,4 +1,4 @@
 export const Query = `type Query {
                         books: [Book]
-                        booksStartWith(startsWith:String!): [Book]
+                        booksStartsWith(startsWith:String!): [Book]
                       }`;
