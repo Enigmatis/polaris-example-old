@@ -1,4 +1,6 @@
+import { QueryWithIrrelevant } from '@enigmatis/mongo-driver';
 import { PolarisContext } from '@enigmatis/polaris';
+import { QueryIrrelevantResult } from '@enigmatis/utills';
 import { UserInputError } from 'apollo-server-koa';
 import { BookModelPerReality } from '../../dal/book-model';
 import { Book } from '../definitions/generated-types';
@@ -44,6 +46,25 @@ export const bookQueryResolver = async (
         throw new UserInputError('please provide reality-id header');
     } else {
         return BookModelPerReality(context).find({});
+    }
+};
+export const bookStartsWithQueryResolver = async (
+    parent: object | null,
+    query: any,
+    context: PolarisContext,
+) => {
+    const { realityId, dataVersion } = context.headers;
+    if (!Number.isInteger(realityId as any)) {
+        throw new UserInputError('please provide reality-id header');
+    } else {
+        const bookModel = BookModelPerReality(context);
+        return QueryWithIrrelevant(
+            bookModel,
+            await bookModel.find({
+                title: { $regex: '^' + query.startsWith, $options: 'i' },
+            }),
+            dataVersion,
+        );
     }
 };
 export const subscribeResolver = (

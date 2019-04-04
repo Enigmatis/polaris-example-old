@@ -1,5 +1,6 @@
 import {
     bookQueryResolver,
+    bookStartsWithQueryResolver,
     createBookResolver,
     subscribeResolver,
     titleResolver,
@@ -12,6 +13,7 @@ export const resolvers = {
     },
     Query: {
         books: bookQueryResolver,
+        booksStartsWith: bookStartsWithQueryResolver,
     },
     Mutation: {
         createBook: createBookResolver,
