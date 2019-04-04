@@ -1,7 +1,7 @@
 import { PolarisContext } from '@enigmatis/polaris';
 import { UserInputError } from 'apollo-server-koa';
 import { BookModelPerReality } from '../../dal/book-model';
-import { Book } from '../definitions/book';
+import { Book } from '../definitions/generated-types';
 import { BOOK_UPDATED } from './subscription-event-names';
 
 export const titleResolver = (book: Book) => {

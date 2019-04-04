@@ -1,8 +1,8 @@
 overwrite: true
-schema: "http://localhost:8085/customEndpoint"
+schema: "src/schema/generator-schema.ts"
+require:
+  - "ts-node/register"
 generates:
-  src/schema/entities/types.d.ts:
+  src/schema/definitions/generated-types.d.ts:
     plugins:
-      - "typescript-common"
-      - "typescript-server"
-      - "typescript-resolvers"
+      - "typescript"
