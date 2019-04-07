@@ -1,6 +1,6 @@
 {
   "loggerLevel": "debug",
-    "logstashConfigurations": [{
+  "logstashConfigurations": [{
     "logstashHost": "127.0.0.1",
     "logstashPort": 12345
   }],

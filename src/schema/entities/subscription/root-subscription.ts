@@ -1,4 +1,4 @@
-import { InjectableType, POLARIS_TYPES } from '@enigmatis/polaris';
+import {InjectableType, POLARIS_TYPES} from "@enigmatis/polaris";
 import { provide } from 'inversify-binding-decorators';
 
 @provide(POLARIS_TYPES.InjectableType)

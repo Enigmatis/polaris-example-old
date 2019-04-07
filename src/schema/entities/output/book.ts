@@ -11,6 +11,7 @@ export class Book implements InjectableType {
                  dataVersion: Int!,
                  title: String,
                  author: String,
+                 otherBook: Book,
                  realityId: Int!
              }
          `;
