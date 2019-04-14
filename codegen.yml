@@ -1,5 +1,5 @@
 overwrite: true
-schema: "src/schema/generator-schema.ts"
+schema: "src/schema/schema-without-resolvers.ts"
 require:
   - "ts-node/register"
 generates:

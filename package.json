@@ -41,7 +41,7 @@
     "graphql": "^14.1.1"
   },
   "scripts": {
-    "build": "npm run clean && npm run build:ts && npm run build:copy && npm run generate",
+    "build": "npm run clean && npm run generate && npm run build:ts && npm run build:copy",
     "build:copy": "npm run build:copy:log-config && npm run build:copy:properties && npm run build:copy:middlewares-config",
     "build:copy:log-config": "shx cp log-configuration.json dist/log-configuration.json",
     "build:copy:properties": "shx cp properties.json dist/properties.json",
