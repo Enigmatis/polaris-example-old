@@ -24,10 +24,8 @@
     "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
-    "graphql-code-generator": "^0.18.0",
-    "graphql-codegen-typescript-common": "0.18.0",
-    "graphql-codegen-typescript-resolvers": "0.18.0",
-    "graphql-codegen-typescript-server": "0.18.0",
+    "@graphql-codegen/cli": "^1.0.6",
+    "@graphql-codegen/typescript": "^1.0.6",
     "prettier": "^1.16.4",
     "rimraf": "^2.6.3",
     "shx": "^0.3.2",
@@ -43,7 +41,7 @@
     "graphql": "^14.1.1"
   },
   "scripts": {
-    "build": "npm run clean && npm run build:ts && npm run build:copy",
+    "build": "npm run clean && npm run generate && npm run build:ts && npm run build:copy",
     "build:copy": "npm run build:copy:log-config && npm run build:copy:properties && npm run build:copy:middlewares-config",
     "build:copy:log-config": "shx cp log-configuration.json dist/log-configuration.json",
     "build:copy:properties": "shx cp properties.json dist/properties.json",
