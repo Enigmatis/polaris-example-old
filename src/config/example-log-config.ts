@@ -13,7 +13,6 @@ export class ExampleLogConfig implements LoggerConfig {
             logstashConfigurations: polarisLogConfigurationPath.logstashConfigurations,
             writeToConsole: polarisLogConfigurationPath.writeToConsole,
             writeFullMessageToConsole: polarisLogConfigurationPath.writeFullMessageToConsole,
-            timezone: polarisLogConfigurationPath.timezone
         };
     }
 }
