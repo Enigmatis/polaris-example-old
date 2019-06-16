@@ -1,6 +1,6 @@
 {
   "port": 8085,
-  "endpoint": "/customEndpoint",
+  "endpoint": "/example",
 
   "applicationId": "p01aris-example",
   "applicationName": "polaris-example",
