@@ -54,7 +54,7 @@
     "lint:fix": "npm run tslint-check && tslint -p . --fix",
     "tslint-check": "tslint-config-prettier-check ./tslint.json",
     "tsc": "tsc",
-    "start": "ts-node ./src/index.ts",
+    "start": "ts-node ./src/index.js",
     "generate": "gql-gen --config codegen.yml"
   },
   "repository": {
