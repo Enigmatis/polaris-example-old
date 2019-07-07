@@ -2,14 +2,14 @@ import { QueryWithIrrelevant } from '@enigmatis/mongo-driver';
 import { PolarisContext } from '@enigmatis/polaris';
 import { QueryIrrelevantResult } from '@enigmatis/utills';
 import { UserInputError } from 'apollo-server-koa';
-import { BookModelPerReality } from '../../dal/book-model';
-import { Book } from '../definitions/generated-types';
+import { InnerModelType } from '../../../../mongo-driver/src/types';
+import { Book, BookModelPerReality } from '../../dal/book-model';
 import { BOOK_UPDATED } from './subscription-event-names';
 
 export const titleResolver = (book: Book) => {
-    if (book.dataVersion !== undefined) {
-        return book.title + ' (version ' + book.dataVersion + ')';
-    }
+    // if (book.dataVersion !== undefined) {
+    //     return book.title + ' (version ' + book.dataVersion + ')';
+    // }
     return 'Special Edition: ' + book.title;
 };
 export const createBookResolver = async (
@@ -33,7 +33,12 @@ export const updateBookResolver = async (
     if (!Number.isInteger(realityId as any)) {
         throw new UserInputError('please provide reality-id header as number');
     } else {
-        return BookModelPerReality(context).findByIdAndUpdate(bookId, update, { new: true });
+        // const x: InnerModelType<Book> | null = await BookModelPerReality(context).findByIdAndUpdate(
+        //     bookId,
+        //     update,
+        //     { new: true },
+        // );
+        // return x;
     }
 };
 export const bookQueryResolver = async (
