@@ -2,7 +2,6 @@ import { QueryWithIrrelevant } from '@enigmatis/mongo-driver';
 import { PolarisContext } from '@enigmatis/polaris';
 import { QueryIrrelevantResult } from '@enigmatis/utills';
 import { UserInputError } from 'apollo-server-koa';
-import { InnerModelType } from '../../../../mongo-driver/src/types';
 import { Book, BookModelPerReality } from '../../dal/book-model';
 import { BOOK_UPDATED } from './subscription-event-names';
 
