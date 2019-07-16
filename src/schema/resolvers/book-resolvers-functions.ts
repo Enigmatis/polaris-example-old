@@ -2,7 +2,7 @@ import { QueryWithIrrelevant } from '@enigmatis/mongo-driver';
 import { PolarisContext } from '@enigmatis/polaris';
 import { QueryIrrelevantResult } from '@enigmatis/utills';
 import { UserInputError } from 'apollo-server-koa';
-import { Book, BookModelPerReality } from '../../dal/book-model';
+import { Book, BookModelExecutorPerReality, BookModelPerReality } from '../../dal/book-model';
 import { BOOK_UPDATED } from './subscription-event-names';
 
 export const titleResolver = (book: Book) => {
@@ -20,7 +20,21 @@ export const createBookResolver = async (
     if (!Number.isInteger(realityId as any)) {
         throw new UserInputError('please provide reality-id header as number');
     } else {
-        return BookModelPerReality(context).create(book);
+        const result = await BookModelExecutorPerReality.execute(m => m.create(book), context);
+        return result;
+    }
+};
+
+export const createBooksResolver = async (
+    parent: object | null,
+    { books }: { books: Book[] },
+    context: PolarisContext,
+) => {
+    const { realityId } = context.headers;
+    if (!Number.isInteger(realityId as any)) {
+        throw new UserInputError('please provide reality-id header as number');
+    } else {
+        return BookModelPerReality(context).insertMany(books);
     }
 };
 export const updateBookResolver = async (
@@ -49,7 +63,12 @@ export const bookQueryResolver = async (
     if (!Number.isInteger(realityId as any)) {
         throw new UserInputError('please provide reality-id header');
     } else {
-        return BookModelPerReality(context).find({});
+        // return BookModelPerReality(context).find({});
+        const result = await BookModelExecutorPerReality.execute(model => {
+            return model.find({});
+        }, context);
+
+        return result;
     }
 };
 export const bookStartsWithQueryResolver = async (
@@ -62,19 +81,21 @@ export const bookStartsWithQueryResolver = async (
         throw new UserInputError('please provide reality-id header');
     } else {
         const bookModel = BookModelPerReality(context);
-        return QueryWithIrrelevant(
+        const result = QueryWithIrrelevant(
             bookModel,
             await bookModel.find({
                 title: { $regex: '^' + query.startsWith, $options: 'i' },
             }),
             dataVersion,
         );
+
+        return result;
     }
 };
 export const subscribeResolver = (
     root: any,
     { realityId }: { realityId: number },
-    { pubSub }: PolarisContext,
+    { pubSub, executionMetadata }: PolarisContext,
 ) => {
     BookModelPerReality({ headers: { realityId } })
         .watch({ fullDocument: 'updateLookup' })

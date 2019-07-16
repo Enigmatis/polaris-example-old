@@ -29,7 +29,7 @@
     "prettier": "^1.16.4",
     "rimraf": "^2.6.3",
     "shx": "^0.3.2",
-    "ts-node": "^8.0.3",
+    "ts-node": "^8.3.0",
     "tslint": "^5.14.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-consistent-codestyle": "^1.15.1",

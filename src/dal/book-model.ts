@@ -1,4 +1,4 @@
-import { getModelCreator, RepositoryModel } from '@enigmatis/mongo-driver';
+import { getModelCreator, getModelExecutor, RepositoryModel } from '@enigmatis/mongo-driver';
 import { Schema } from 'mongoose';
 
 export interface Book extends RepositoryModel {
@@ -12,3 +12,5 @@ const bookSchema: Schema = new Schema({
 });
 
 export const BookModelPerReality = getModelCreator<Book>('book', bookSchema);
+
+export const BookModelExecutorPerReality = getModelExecutor<Book>('book', bookSchema);

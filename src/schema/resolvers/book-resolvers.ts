@@ -2,6 +2,7 @@ import {
     bookQueryResolver,
     bookStartsWithQueryResolver,
     createBookResolver,
+    createBooksResolver,
     subscribeResolver,
     titleResolver,
     updateBookResolver,
@@ -17,6 +18,7 @@ export const resolvers = {
     },
     Mutation: {
         createBook: createBookResolver,
+        createBooks: createBooksResolver,
         updateBook: updateBookResolver,
     },
     Subscription: {
